@@ -1,4 +1,4 @@
-import Cookies from "cookies"
+import { getCookie } from "cookies-next"
 import { Unauthorized } from "http-errors"
 import { Container } from "@/utils/di"
 import { Middleware } from "@/utils/handler"
@@ -9,10 +9,9 @@ const authService = Container.resolve(AuthService)
 
 export const admin: Middleware<{ admin: AdminDocument }> = async (req, res, next) => {
     try {
-        const cookies = new Cookies(req, res)
-        const token = cookies.get("token")
+        const token = getCookie("token", { req, res })
 
-        const admin = await authService.verify(token)
+        const admin = await authService.verify(token.toString())
 
         req.admin = admin.doc()
 

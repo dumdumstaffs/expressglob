@@ -1,4 +1,4 @@
-import Cookies from "cookies"
+import { removeCookies } from "cookies-next"
 import { Controller, handle, Route } from "@/utils/handler";
 import { admin } from "@/middlewares/admin";
 import { TypedRequest, TypedResponse } from "@/types/request";
@@ -10,8 +10,7 @@ class Handler {
     @Route()
     public async post(req: TypedRequest, res: TypedResponse) {
 
-        const cookies = new Cookies(req, res)
-        cookies.set("token")
+        removeCookies("token", { req, res })
 
         res.json({ message: "Logout successful" })
     }

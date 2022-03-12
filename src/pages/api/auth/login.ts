@@ -1,4 +1,4 @@
-import Cookies from "cookies"
+import { setCookies } from "cookies-next"
 import { config } from "@/utils/config";
 import { Controller, handle, Route } from "@/utils/handler";
 import Bootstrap from "@/services/bootstrap";
@@ -19,12 +19,12 @@ class Handler {
         await this.bootstrap.initialize(email, password)
         const token = await this.authService.authenticate(email, password)
 
-        const cookies = new Cookies(req, res)
-        cookies.set("token", token, {
+        setCookies("token", token, {
             secure: config.app.isProd,
             httpOnly: true,
             sameSite: "strict",
-            maxAge: config.session.LIFETIME * 24 * 60 * 60 * 1000
+            maxAge: config.session.LIFETIME * 24 * 60 * 60 * 1000,
+            req, res
         })
 
         res.json({ message: "Login successful" })

@@ -1,19 +1,17 @@
-import { AxiosInstance } from "axios"
 import { IncomingMessage, ServerResponse } from "http"
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next"
-import { Container, Inject } from "@/utils/di"
+import { Container } from "@/utils/di"
 import AuthService from "@/services/auth"
-import Cookies from "cookies"
+import { getCookie } from "cookies-next"
 import { Admin } from "@/types/admin"
 
 const authService = Container.resolve(AuthService)
 
 export const getAuth = async (req: IncomingMessage, res: ServerResponse): Promise<Admin | null> => {
     try {
-        const cookies = new Cookies(req, res)
-        const token = cookies.get("token")
+        const token = getCookie("token", { req, res })
 
-        const admin = await authService.verify(token)
+        const admin = await authService.verify(token.toString())
 
         return admin.get()
     } catch (e) {
