@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="16px" viewBox="0 0 96 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 21</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.000000 0 0 0 0 0.478431 0 0 0 0 0.717647 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="CEM-support" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-21">
+            <image id="arrow-adjustment3" x="0" y="0" width="96" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAQCAYAAADpunr5AAAABGdBTUEAALGOfPtRkwAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAYKADAAQAAAABAAAAEAAAAABQ4b+BAAAAMklEQVRYCe3QAQ0AAADCoPdPbQ8HESgMGDBgwIABAwYMGDBgwIABAwYMGDBgwICB94EBGBAAAda5Nv4AAAAASUVORK5CYII="></image>
+            <g id="System/Navigational/Arrow-Down/Arrow-Down-16px" transform="translate(84.000000, 0.000000)" stroke-linejoin="round">
+                <g filter="url(#filter-1)" id="Icon-Color">
+                    <g>
+                        <polyline id="Path" stroke="#333333" points="11 10 5.5 15.5 0 10"></polyline>
+                        <line x1="5.5" y1="15.5" x2="5.5" y2="0" id="Path" stroke="#333333"></line>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
