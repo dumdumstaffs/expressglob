@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Script from "next/script";
 import FedexLayout from "@/layouts/FedexLayout";
 import Hero from "@/containers/Hero";
 import { ActionIcons, FeaturedOffer, PocBanner, PodsCarousel, PodsRow } from "@/containers/Sections";
@@ -6,6 +7,7 @@ import { ActionIcons, FeaturedOffer, PocBanner, PodsCarousel, PodsRow } from "@/
 export default function Home() {
   return (
     <FedexLayout>
+      <Script async src="//code.tidio.co/sz1bltesktxglzebth9iazexuonzgzvh.js" />
       <Hero />
       <div className="container responsivegrid fxg-wrapper aem-GridColumn aem-GridColumn--default--12">
         <div className="cmp-container">
