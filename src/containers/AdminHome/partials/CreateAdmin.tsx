@@ -106,8 +106,8 @@ export const CreateAdmin = () => {
                 <Input label="Email" {...register("email")} error={errors.email?.message} />
                 <Input label="First Name" {...register("firstName")} error={errors.firstName?.message} />
                 <Input label="Last Name" {...register("lastName")} error={errors.lastName?.message} />
-                <Input label="Password" {...register("password")} error={errors.password?.message} />
-                <Input label="Confirm Password" {...register("confirmPassword")} error={errors.confirmPassword?.message} />
+                <Input label="Password" type="password" {...register("password")} error={errors.password?.message} />
+                <Input label="Confirm Password" type="password" {...register("confirmPassword")} error={errors.confirmPassword?.message} />
 
                 <p className="text-red-400 !my-6 text-center">{createAdminMutation.isError && createAdminMutation.axiosError?.response.data.message}</p>
 
