@@ -103,9 +103,15 @@ const ShipmentSchema = new mongoose.Schema<ShipmentDocument, ShipmentModel>(
     }
 )
 
-new ShipmentPlugin(ShipmentSchema).apply()
+ShipmentPlugin.plugin(ShipmentSchema)
 
 export const Shipment = mongoose.models.Shipment as ShipmentModel || mongoose.model<ShipmentDocument, ShipmentModel>("Shipment", ShipmentSchema)
 
 export type { ShipmentDocument, ShipmentModel } from "./types"
-export { ShipmentResource, ShipmentLocationResource } from "./resource"
+export {
+    ShipmentResource,
+    ShipmentPaginatedCollection,
+    ShipmentLocationResource,
+    ShipmentLocationResourceCollection,
+    ShipmentAddressInfoResource
+} from "./resource"

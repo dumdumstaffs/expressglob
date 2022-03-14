@@ -1,26 +1,30 @@
 import { NextApiRequest } from "next"
 import { Model, Query } from "mongoose"
-import { FilterFields } from "@/utils/models"
-import { PaginatedResponse } from "@/types"
+import { FilterExpression } from "@/utils/models"
+import { PaginatedResponse, WithDate } from "@/types"
 import { Admin } from "@/types/admin"
 
+// document dates
+type AdminDates = "createdAt" | "updatedAt"
+
 // document instance
-export interface AdminDocument extends Admin {
+export interface AdminDocument extends WithDate<Admin, AdminDates> {
     password: string
-    validatePassword(passwordAttempt: string): Promise<boolean>
 }
 
 // document overrides
-interface AdminOverrides { }
+interface AdminOverrides {
+    validatePassword(passwordAttempt: string): Promise<boolean>
+}
 
 // query helpers
 interface AdminQueryHelpers {
     filter(
         req: NextApiRequest,
-        fields: FilterFields
+        fields: FilterExpression<AdminDocument>
     ): Query<AdminDocument[], AdminDocument> & AdminQueryHelpers
 
-    paginate(req: NextApiRequest): Promise<PaginatedResponse<AdminDocument>>
+    paginate(req: NextApiRequest): Promise<PaginatedResponse<InstanceType<AdminModel>>>
 }
 
 // static methods

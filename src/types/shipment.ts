@@ -33,4 +33,6 @@ export interface Shipment {
     service: string
     signature: boolean
     locations: Location[]
+    createdAt: string
+    updatedAt: string
 }

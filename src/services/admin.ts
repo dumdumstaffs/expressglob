@@ -1,15 +1,15 @@
 import { NextApiRequest } from "next"
 import { Conflict, Unauthorized } from "http-errors"
 import { Inject } from "@/utils/di"
-import { Admin, AdminResource } from "@/models/admin"
+import { Admin, AdminPaginatedCollection, AdminResource } from "@/models/admin"
 import { AdminCreateDto } from "@/schemas/admin"
 
 @Inject()
 export default class AdminService {
     public async getAll(req: NextApiRequest) {
-        const admins = await Admin.find().sort("-createdAt").paginate(req)
+        const admins = await Admin.find().sort("-createdAt").filter(req, "email").paginate(req)
 
-        return AdminResource.paginate(admins)
+        return new AdminPaginatedCollection(admins)
     }
 
     public async findByIdOrFail(id: string, password?: string) {

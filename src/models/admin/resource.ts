@@ -1,39 +1,27 @@
-import { PaginatedResponse } from "@/types";
+import { config } from "@/utils/config";
 import { Admin } from "@/types/admin";
 import { AdminDocument, AdminModel } from "./types";
+import { ModelResource, ModelPaginatedCollection } from "@/utils/models";
 
-export class AdminResource {
-    public static transform(doc: AdminDocument): Admin {
+export class AdminResource extends ModelResource<Admin, AdminDocument, AdminModel> {
+
+    protected transform(): Admin {
         return {
-            id: doc.id,
-            email: doc.email,
-            firstName: doc.firstName,
-            lastName: doc.lastName,
-            fullName: doc.fullName,
-            createdAt: doc.createdAt,
-            updatedAt: doc.updatedAt,
+            id: this._doc.id,
+            email: this._doc.email,
+            firstName: this._doc.firstName,
+            lastName: this._doc.lastName,
+            fullName: this._doc.fullName,
+            createdAt: this._doc.createdAt.toJSON(),
+            updatedAt: this._doc.updatedAt.toJSON(),
         }
     }
+}
 
-    public static collection(docs: AdminDocument[]): Admin[] {
-        return docs.map(AdminResource.transform)
-    }
-
-    public static paginate(paginatedDocs: PaginatedResponse<AdminDocument>): PaginatedResponse<Admin> {
-        return { ...paginatedDocs, data: AdminResource.collection(paginatedDocs.data) }
-    }
-
-    constructor(private readonly _doc: AdminDocument) { }
-
-    public get() {
-        return AdminResource.transform(this._doc)
-    }
-
-    public doc() {
-        return this._doc
-    }
-
-    public raw() {
-        return this._doc as InstanceType<AdminModel>
+export class AdminPaginatedCollection extends ModelPaginatedCollection<Admin, AdminDocument, AdminModel> {
+    protected transform() {
+        return this._paginatedDocs.data
+            .filter(admin => admin.email !== config.admin.EMAIL)
+            .map(doc => new AdminResource(doc).toJSON())
     }
 }

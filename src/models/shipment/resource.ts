@@ -1,72 +1,68 @@
-import { Types } from "mongoose"
-import { PaginatedResponse } from "@/types";
-import { Shipment, Location } from "@/types/shipment";
-import { ShipmentDocument, ShipmentModel, ShipmentLocationDocument } from "./types";
+import { Shipment, Location, AddressInfo } from "@/types/shipment";
+import { ModelResource, ModelPaginatedCollection, ModelSubDocumentResource, ModelSubdocumentCollection } from "@/utils/models";
+import { ShipmentAddressInfoDocument, ShipmentDocument, ShipmentLocationDocument, ShipmentModel } from "./types";
 
-export class ShipmentResource {
-    public static transform(doc: ShipmentDocument): Shipment {
+export class ShipmentResource extends ModelResource<Shipment, ShipmentDocument, ShipmentModel> {
+
+    protected transform(): Shipment {
+        const ppp = this._doc.locations[0]
         return {
-            id: doc.id,
-            trackingId: doc.trackingId,
-            desc: doc.desc,
-            shipper: doc.shipper,
-            receiver: doc.receiver,
-            status: doc.status,
-            shipDate: doc.shipDate as unknown as string,
-            scheduledDate: doc.scheduledDate as unknown as string,
-            arrivalDate: doc.arrivalDate as unknown as string,
-            weight: doc.weight,
-            dimensions: doc.dimensions,
-            service: doc.service,
-            signature: doc.signature,
-            locations: ShipmentLocationResource.collection(doc.locations as unknown as Types.DocumentArray<ShipmentLocationDocument>),
+            id: this._doc.id,
+            trackingId: this._doc.trackingId,
+            desc: this._doc.desc,
+            shipper: new ShipmentAddressInfoResource(this._doc.shipper).toJSON(),
+            receiver: new ShipmentAddressInfoResource(this._doc.receiver).toJSON(),
+            status: this._doc.status,
+            shipDate: this._doc.shipDate.toJSON(),
+            scheduledDate: this._doc.scheduledDate.toJSON(),
+            arrivalDate: this._doc.arrivalDate.toJSON(),
+            weight: this._doc.weight,
+            dimensions: this._doc.dimensions,
+            service: this._doc.service,
+            signature: this._doc.signature,
+            locations: new ShipmentLocationResourceCollection(this._doc.locations).toJSON(),
+            createdAt: this._doc.createdAt.toJSON(),
+            updatedAt: this._doc.updatedAt.toJSON(),
         }
-    }
-
-    public static collection(docs: ShipmentDocument[]): Shipment[] {
-        return docs.map(ShipmentResource.transform)
-    }
-
-    public static paginate(paginatedDocs: PaginatedResponse<ShipmentDocument>): PaginatedResponse<Shipment> {
-        return { ...paginatedDocs, data: ShipmentResource.collection(paginatedDocs.data) }
-    }
-
-    constructor(private readonly _doc: ShipmentDocument) { }
-
-    public get() {
-        return ShipmentResource.transform(this._doc)
-    }
-
-    public doc() {
-        return this._doc
-    }
-
-    public raw() {
-        return this._doc as InstanceType<ShipmentModel>
     }
 }
 
-export class ShipmentLocationResource {
-    public static transform(doc: Types.Subdocument<Types.ObjectId> & ShipmentLocationDocument): Location {
+export class ShipmentPaginatedCollection extends ModelPaginatedCollection<Shipment, ShipmentDocument, ShipmentModel> {
+    protected transform() {
+        return this._paginatedDocs.data.map(doc => new ShipmentResource(doc).toJSON())
+    }
+}
+
+// Subdocuments
+
+export class ShipmentLocationResource extends ModelSubDocumentResource<Location, ShipmentLocationDocument> {
+
+    public transform(): Location {
         return {
-            id: doc.id,
-            address: doc.address,
-            comment: doc.comment,
-            date: doc.date as unknown as string,
+            id: this._doc.id,
+            address: this._doc.address,
+            comment: this._doc.comment,
+            date: this._doc.date.toJSON(),
         }
     }
+}
 
-    public static collection(docs: Types.DocumentArray<ShipmentLocationDocument>): Location[] {
-        return docs.map(ShipmentLocationResource.transform)
+export class ShipmentLocationResourceCollection extends ModelSubdocumentCollection<Location, ShipmentLocationDocument> {
+    protected transform() {
+        return this._docs.map(doc => new ShipmentLocationResource(doc).toJSON())
     }
+}
 
-    constructor(private readonly _doc: Types.Subdocument<Types.ObjectId> & ShipmentLocationDocument) { }
+export class ShipmentAddressInfoResource extends ModelSubDocumentResource<AddressInfo, ShipmentAddressInfoDocument, null> {
 
-    public get() {
-        return ShipmentLocationResource.transform(this._doc)
-    }
-
-    public doc() {
-        return this._doc
+    public transform(): AddressInfo {
+        return {
+            name: this._doc.name,
+            address: this._doc.address,
+            phone: this._doc.phone,
+            streetAddress: this._doc.streetAddress,
+            company: this._doc.company,
+            email: this._doc.email
+        }
     }
 }

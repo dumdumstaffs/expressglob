@@ -28,9 +28,9 @@ const AdminSchema = new mongoose.Schema<AdminDocument, AdminModel>(
     }
 )
 
-new AdminPlugin(AdminSchema).apply()
+AdminPlugin.plugin(AdminSchema)
 
 export const Admin = mongoose.models.Admin as AdminModel || mongoose.model<AdminDocument, AdminModel>("Admin", AdminSchema)
 
 export type { AdminDocument, AdminModel } from "./types"
-export { AdminResource } from "./resource"
+export { AdminResource, AdminPaginatedCollection } from "./resource"

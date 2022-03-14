@@ -1,8 +1,13 @@
 import { NextApiRequest } from "next";
-import { FilterFields, ModelFilter, ModelPaginate, ModelPlugin } from "@/utils/models";
-import { ShipmentDocument, ShipmentModel } from "./types";
+import { Schema } from "mongoose"
+import { FilterExpression, ModelFilter, ModelPaginate, ModelPlugin } from "@/utils/models";
+import { ShipmentDocument } from "./types";
 
-export class ShipmentPlugin extends ModelPlugin<ShipmentDocument, ShipmentModel> {
+export class ShipmentPlugin extends ModelPlugin<ShipmentDocument> {
+    public static plugin(Schema: Schema<ShipmentDocument>) {
+        return new this(Schema).apply()
+    }
+
     protected applyHooks(): void { }
 
     protected applyVirtuals(): void { }
@@ -15,7 +20,7 @@ export class ShipmentPlugin extends ModelPlugin<ShipmentDocument, ShipmentModel>
             return paginator.paginate()
         }
 
-        this.Schema.query.filter = function (req: NextApiRequest, fields: FilterFields) {
+        this.Schema.query.filter = function (req: NextApiRequest, fields: FilterExpression<ShipmentDocument>) {
             const filter = new ModelFilter<ShipmentDocument>(req, this, fields)
             return filter.filter()
         }

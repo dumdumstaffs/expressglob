@@ -1,7 +1,7 @@
 import { removeCookies } from "cookies-next"
 import { Controller, handle, Route } from "@/utils/handler";
-import { admin } from "@/middlewares/admin";
 import { TypedRequest, TypedResponse } from "@/types/request";
+import { admin } from "@/middlewares/admin";
 
 @Controller(admin)
 class Handler {

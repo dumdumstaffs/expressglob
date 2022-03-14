@@ -61,7 +61,7 @@ export default class Bootstrap {
         try {
             const admin = await this.adminService.findByIdOrFail(id)
 
-            if (admin.get().email === config.admin.EMAIL) return false
+            if (admin.doc().email === config.admin.EMAIL) return false
 
             return true
         } catch (error) {

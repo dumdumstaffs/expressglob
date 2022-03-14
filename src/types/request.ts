@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import * as yup from "yup"
-import { AdminDocument } from "@/models/admin"
+import { AdminModel } from "@/models/admin"
 
 export type TypedRequest<
     Schema extends yup.AnyObjectSchema | null = yup.AnyObjectSchema,
@@ -8,7 +8,7 @@ export type TypedRequest<
     > = NextApiRequest & {
         validated: yup.InferType<Schema extends yup.AnyObjectSchema ? Schema : yup.AnyObjectSchema>,
         query: Params,
-        admin?: AdminDocument
+        admin?: InstanceType<AdminModel>
     }
 
 export type TypedResponse<

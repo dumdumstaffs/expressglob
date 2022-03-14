@@ -1,10 +1,10 @@
 import { setCookies } from "cookies-next"
 import { config } from "@/utils/config";
 import { Controller, handle, Route } from "@/utils/handler";
+import { TypedRequest, TypedResponse } from "@/types/request";
 import Bootstrap from "@/services/bootstrap";
 import AuthService from "@/services/auth";
 import AuthSchema from "@/schemas/misc/auth";
-import { TypedRequest, TypedResponse } from "@/types/request";
 
 @Controller()
 class Handler {

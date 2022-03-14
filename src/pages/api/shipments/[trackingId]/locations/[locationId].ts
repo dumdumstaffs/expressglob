@@ -1,22 +1,25 @@
 import { Controller, handle, Route } from "@/utils/handler";
+import { TypedRequest, TypedResponse } from "@/types/request";
 import { admin } from "@/middlewares/admin";
 import ShipmentSchema from "@/schemas/shipment";
 import ShipmentService from "@/services/shipment";
-import { TypedRequest, TypedResponse } from "@/types/request";
-import { Location } from "@/types/shipment";
+import { ShipmentLocationResource } from "@/models/shipment";
 
 @Controller(admin)
 class Handler {
     constructor(private readonly shipmentService: ShipmentService) { }
 
     @Route(ShipmentSchema.updateLocation)
-    async put(req: TypedRequest<typeof ShipmentSchema.updateLocation, { trackingId: string, locationId: string }>, res: TypedResponse<Location>) {
+    async put(
+        req: TypedRequest<typeof ShipmentSchema.updateLocation, { trackingId: string, locationId: string }>,
+        res: TypedResponse<ShipmentLocationResource>
+    ) {
 
         const { trackingId, locationId } = req.query
 
         const updatedLocation = await this.shipmentService.updateLocation(trackingId, locationId, req.validated)
 
-        res.json(updatedLocation.get())
+        res.json(updatedLocation)
     }
 
     @Route()

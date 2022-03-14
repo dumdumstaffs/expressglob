@@ -1,8 +1,8 @@
-import { NotFound } from "http-errors"
 import { NextApiRequest } from "next"
+import { NotFound } from "http-errors"
 import { customAlphabet } from "nanoid"
 import { Inject } from "@/utils/di"
-import { Shipment, ShipmentResource, ShipmentLocationResource } from "@/models/shipment"
+import { Shipment, ShipmentResource, ShipmentLocationResource, ShipmentPaginatedCollection } from "@/models/shipment"
 import { ShipmentCreateDtoWithDate, ShipmentUpdateDtoWithDate, ShipmentPushLocationDtoWithDate, ShipmentUpdateLocationDtoWithDate } from "@/schemas/shipment"
 
 @Inject()
@@ -10,7 +10,7 @@ export default class ShipmentService {
     public async getAll(req: NextApiRequest) {
         const shipments = await Shipment.find().sort("-createdAt").paginate(req)
 
-        return ShipmentResource.paginate(shipments)
+        return new ShipmentPaginatedCollection(shipments)
     }
 
     public async findByIdOrFail(id: string) {

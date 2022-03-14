@@ -1,11 +1,15 @@
 import bcrypt from "bcrypt"
 import { NextApiRequest } from "next";
-import { CallbackError } from "mongoose"
+import { CallbackError, Schema } from "mongoose"
 import { capitalise } from "@/utils/helpers";
-import { FilterFields, ModelFilter, ModelPaginate, ModelPlugin } from "@/utils/models";
-import { AdminDocument, AdminModel } from "./types";
+import { FilterExpression, ModelFilter, ModelPaginate, ModelPlugin } from "@/utils/models";
+import { AdminDocument } from "./types";
 
-export class AdminPlugin extends ModelPlugin<AdminDocument, AdminModel> {
+export class AdminPlugin extends ModelPlugin<AdminDocument> {
+    public static plugin(Schema: Schema<AdminDocument>) {
+        return new this(Schema).apply()
+    }
+
     protected applyHooks(): void {
         this.Schema.pre("save", async function (next) {
             try {
@@ -46,7 +50,7 @@ export class AdminPlugin extends ModelPlugin<AdminDocument, AdminModel> {
             return paginator.paginate()
         }
 
-        this.Schema.query.filter = function (req: NextApiRequest, fields: FilterFields) {
+        this.Schema.query.filter = function (req: NextApiRequest, fields: FilterExpression<AdminDocument>) {
             const filter = new ModelFilter<AdminDocument>(req, this, fields)
             return filter.filter()
         }

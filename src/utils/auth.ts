@@ -13,7 +13,7 @@ export const getAuth = async (req: IncomingMessage, res: ServerResponse): Promis
 
         const admin = await authService.verify(token.toString())
 
-        return admin.get()
+        return admin.toJSON()
     } catch (e) {
         return null
     }

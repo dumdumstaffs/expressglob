@@ -1,8 +1,8 @@
 import { Unauthorized } from "http-errors"
 import { Inject } from "@/utils/di"
+import { Catch } from "@/utils/error"
 import JwtService from "@/services/jwt"
 import AdminService from "@/services/admin"
-import { Catch } from "@/utils/error"
 
 @Inject()
 export default class AuthService {
@@ -16,7 +16,7 @@ export default class AuthService {
     public async authenticate(email: string, password: string) {
         const admin = await this.adminService.findOrFail(email, password)
 
-        const token = await this.jwtService.signSession(admin.get().id)
+        const token = await this.jwtService.signSession(admin.doc().id)
         return token
     }
 

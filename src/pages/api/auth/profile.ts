@@ -1,6 +1,5 @@
 import { Controller, handle, Route } from "@/utils/handler";
 import { TypedRequest, TypedResponse } from "@/types/request";
-import { Admin } from "@/types/admin";
 import { admin } from "@/middlewares/admin";
 import { AdminResource } from "@/models/admin";
 
@@ -9,11 +8,11 @@ class Handler {
     constructor() { }
 
     @Route()
-    public async get(req: TypedRequest, res: TypedResponse<Admin>) {
+    public async get(req: TypedRequest, res: TypedResponse<AdminResource>) {
 
         const profile = new AdminResource(req.admin)
 
-        res.json(profile.get())
+        res.json(profile)
     }
 
 }
