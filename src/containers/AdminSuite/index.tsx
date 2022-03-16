@@ -12,6 +12,7 @@ import { TrackingNav } from "./partials/TrackingNav"
 import { UpdateParcel } from "./partials/UpdateParcel"
 import { PushLocation } from "./partials/PushLocation"
 import { UpdateLocation } from "./partials/UpdateLocation"
+import { PushImages } from "./partials/PushImages"
 import { Controller, useStore } from "./store"
 
 export default function AdminSuite() {
@@ -46,12 +47,15 @@ export default function AdminSuite() {
                             <div className="mx-2 flex items-center justify-start">
                                 <TabLink label="Travel History" active={store.tab === "history"} onClick={() => Controller.setTab("history")} />
                                 <TabLink label="Shipment Facts" active={store.tab === "facts"} onClick={() => Controller.setTab("facts")} />
-                                <TabLink label="Update" active={store.tab === "update"} onClick={() => Controller.setTab("update")} />
                                 {
-                                    store.tab === "updateLocation" ? (
-                                        <TabLink label="Update Location" active={store.tab === "updateLocation"} onClick={() => { }} />
-                                    ) : (
+                                    store.tab === "pushLocation" ? (
                                         <TabLink label="Add Location" active={store.tab === "pushLocation"} onClick={() => Controller.setTab("pushLocation")} />
+                                    ) : store.tab === "updateLocation" ? (
+                                        <TabLink label="Update Location" active={store.tab === "updateLocation"} onClick={() => { }} />
+                                    ) : store.tab === "images" ? (
+                                        <TabLink label="Manage Images" active={store.tab === "images"} onClick={() => { }} />
+                                    ) : (
+                                        <TabLink label="Update" active={store.tab === "update"} onClick={() => Controller.setTab("update")} />
                                     )
                                 }
                             </div>
@@ -60,6 +64,7 @@ export default function AdminSuite() {
                             {store.tab === "update" && <UpdateParcel shipment={shipment.data} />}
                             {store.tab === "pushLocation" && <PushLocation shipment={shipment.data} />}
                             {store.tab === "updateLocation" && <UpdateLocation shipment={shipment.data} locationId={store.locationId} />}
+                            {store.tab === "images" && <PushImages shipment={shipment.data} />}
                         </div>
                     </div>
                 ) : null

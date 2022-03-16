@@ -4,6 +4,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        "2xs": "10px",
+        "3xs": "8px",
+      },
       colors: {
         fedex: {
           DEFAULT: "#4d148c",

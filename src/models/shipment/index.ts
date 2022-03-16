@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 import { ShipmentPlugin } from "./plugin"
-import { ShipmentDocument, ShipmentModel, ShipmentAddressInfoDocument, ShipmentLocationDocument } from "./types"
+import { ShipmentDocument, ShipmentModel, ShipmentAddressInfoDocument, ShipmentLocationDocument, ShipmentImageDocument } from "./types"
 
 const AddressInfoSchema = new mongoose.Schema<ShipmentAddressInfoDocument>({
     name: {
@@ -39,6 +39,17 @@ const LocationSchema = new mongoose.Schema<ShipmentLocationDocument>({
         required: true
     },
     comment: {
+        type: String,
+        required: true
+    }
+})
+
+const ImageSchema = new mongoose.Schema<ShipmentImageDocument>({
+    url: {
+        type: String,
+        required: true
+    },
+    cloudId: {
         type: String,
         required: true
     }
@@ -97,6 +108,7 @@ const ShipmentSchema = new mongoose.Schema<ShipmentDocument, ShipmentModel>(
             default: false,
         },
         locations: [LocationSchema],
+        images: [ImageSchema]
     },
     {
         timestamps: true
@@ -112,6 +124,8 @@ export {
     ShipmentResource,
     ShipmentPaginatedCollection,
     ShipmentLocationResource,
-    ShipmentLocationResourceCollection,
+    ShipmentLocationCollection,
+    ShipmentImageResource,
+    ShipmentImageCollection,
     ShipmentAddressInfoResource
 } from "./resource"

@@ -1,28 +1,27 @@
-import { Shipment, Location, AddressInfo } from "@/types/shipment";
 import { ModelResource, ModelPaginatedCollection, ModelSubDocumentResource, ModelSubdocumentCollection } from "@/utils/models";
-import { ShipmentAddressInfoDocument, ShipmentDocument, ShipmentLocationDocument, ShipmentModel } from "./types";
+import { Shipment, Location, Image, AddressInfo } from "@/types/shipment";
+import { ShipmentAddressInfoDocument, ShipmentDocument, ShipmentImageDocument, ShipmentLocationDocument, ShipmentModel } from "./types";
 
 export class ShipmentResource extends ModelResource<Shipment, ShipmentDocument, ShipmentModel> {
-
     protected transform(): Shipment {
-        const ppp = this._doc.locations[0]
         return {
             id: this._doc.id,
             trackingId: this._doc.trackingId,
             desc: this._doc.desc,
-            shipper: new ShipmentAddressInfoResource(this._doc.shipper).toJSON(),
-            receiver: new ShipmentAddressInfoResource(this._doc.receiver).toJSON(),
+            shipper: this._doc.shipper,
+            receiver: this._doc.receiver,
             status: this._doc.status,
             shipDate: this._doc.shipDate.toJSON(),
             scheduledDate: this._doc.scheduledDate.toJSON(),
-            arrivalDate: this._doc.arrivalDate.toJSON(),
+            arrivalDate: this._doc.arrivalDate?.toJSON(),
             weight: this._doc.weight,
             dimensions: this._doc.dimensions,
             service: this._doc.service,
             signature: this._doc.signature,
-            locations: new ShipmentLocationResourceCollection(this._doc.locations).toJSON(),
+            locations: new ShipmentLocationCollection(this._doc.locations).toJSON(),
+            images: new ShipmentImageCollection(this._doc.images).toJSON(),
             createdAt: this._doc.createdAt.toJSON(),
-            updatedAt: this._doc.updatedAt.toJSON(),
+            updatedAt: this._doc.updatedAt.toJSON()
         }
     }
 }
@@ -36,8 +35,7 @@ export class ShipmentPaginatedCollection extends ModelPaginatedCollection<Shipme
 // Subdocuments
 
 export class ShipmentLocationResource extends ModelSubDocumentResource<Location, ShipmentLocationDocument> {
-
-    public transform(): Location {
+    protected transform(): Location {
         return {
             id: this._doc.id,
             address: this._doc.address,
@@ -47,15 +45,30 @@ export class ShipmentLocationResource extends ModelSubDocumentResource<Location,
     }
 }
 
-export class ShipmentLocationResourceCollection extends ModelSubdocumentCollection<Location, ShipmentLocationDocument> {
+export class ShipmentLocationCollection extends ModelSubdocumentCollection<Location, ShipmentLocationDocument> {
     protected transform() {
         return this._docs.map(doc => new ShipmentLocationResource(doc).toJSON())
     }
 }
 
-export class ShipmentAddressInfoResource extends ModelSubDocumentResource<AddressInfo, ShipmentAddressInfoDocument, null> {
+export class ShipmentImageResource extends ModelSubDocumentResource<Image, ShipmentImageDocument> {
+    protected transform(): Image {
+        return {
+            id: this._doc.id,
+            url: this._doc.url,
+            cloudId: this._doc.cloudId,
+        }
+    }
+}
 
-    public transform(): AddressInfo {
+export class ShipmentImageCollection extends ModelSubdocumentCollection<Image, ShipmentImageDocument> {
+    protected transform() {
+        return this._docs.map(doc => new ShipmentImageResource(doc).toJSON())
+    }
+}
+
+export class ShipmentAddressInfoResource extends ModelSubDocumentResource<AddressInfo, ShipmentAddressInfoDocument, null> {
+    protected transform(): AddressInfo {
         return {
             name: this._doc.name,
             address: this._doc.address,

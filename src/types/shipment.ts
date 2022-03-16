@@ -18,6 +18,12 @@ export type Location = {
     comment: string
 }
 
+export type Image = {
+    id: string
+    url: string
+    cloudId: string
+}
+
 export interface Shipment {
     id: string
     trackingId: string
@@ -35,4 +41,5 @@ export interface Shipment {
     locations: Location[]
     createdAt: string
     updatedAt: string
+    images: Image[]
 }

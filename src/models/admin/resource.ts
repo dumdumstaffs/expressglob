@@ -1,10 +1,9 @@
 import { config } from "@/utils/config";
+import { ModelResource, ModelPaginatedCollection } from "@/utils/models";
 import { Admin } from "@/types/admin";
 import { AdminDocument, AdminModel } from "./types";
-import { ModelResource, ModelPaginatedCollection } from "@/utils/models";
 
 export class AdminResource extends ModelResource<Admin, AdminDocument, AdminModel> {
-
     protected transform(): Admin {
         return {
             id: this._doc.id,

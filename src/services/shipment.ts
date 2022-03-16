@@ -1,12 +1,15 @@
 import { NextApiRequest } from "next"
-import { NotFound } from "http-errors"
 import { customAlphabet } from "nanoid"
 import { Inject } from "@/utils/di"
-import { Shipment, ShipmentResource, ShipmentLocationResource, ShipmentPaginatedCollection } from "@/models/shipment"
-import { ShipmentCreateDtoWithDate, ShipmentUpdateDtoWithDate, ShipmentPushLocationDtoWithDate, ShipmentUpdateLocationDtoWithDate } from "@/schemas/shipment"
+import { AppError } from "@/utils/error"
+import MediaService from "@/services/media"
+import { Shipment, ShipmentResource, ShipmentLocationResource, ShipmentPaginatedCollection, ShipmentImageResource } from "@/models/shipment"
+import { ShipmentCreateDtoWithDate, ShipmentUpdateDtoWithDate, ShipmentPushLocationDtoWithDate, ShipmentUpdateLocationDtoWithDate, ShipmentPushImageDto } from "@/schemas/shipment"
 
 @Inject()
 export default class ShipmentService {
+    constructor(private readonly mediaService: MediaService) { }
+
     public async getAll(req: NextApiRequest) {
         const shipments = await Shipment.find().sort("-createdAt").paginate(req)
 
@@ -15,14 +18,14 @@ export default class ShipmentService {
 
     public async findByIdOrFail(id: string) {
         const shipment = await Shipment.findById(id)
-        if (!shipment) throw new NotFound("Shipment not found")
+        if (!shipment) throw new AppError("Shipment not found", AppError.ErrorCodes.NotFound)
 
         return new ShipmentResource(shipment)
     }
 
     public async findOrFail(trackingId: string) {
         const shipment = await Shipment.findOne({ trackingId })
-        if (!shipment) throw new NotFound("Shipment not found")
+        if (!shipment) throw new AppError("Shipment not found", AppError.ErrorCodes.NotFound)
 
         return new ShipmentResource(shipment)
     }
@@ -90,7 +93,7 @@ export default class ShipmentService {
         }, {
             new: true
         })
-        if (!shipment) throw new NotFound("Shipment not found")
+        if (!shipment) throw new AppError("Shipment not found", AppError.ErrorCodes.NotFound)
 
         return new ShipmentResource(shipment)
     }
@@ -112,7 +115,7 @@ export default class ShipmentService {
         const shipmentDocument = shipment.raw()
 
         const location = shipmentDocument.locations.id(locationId)
-        if (!location) throw new NotFound("Shipment Location not found")
+        if (!location) throw new AppError("Shipment not found", AppError.ErrorCodes.NotFound)
 
         location.set(L)
 
@@ -126,9 +129,35 @@ export default class ShipmentService {
         const shipmentDocument = shipment.raw()
 
         const location = shipmentDocument.locations.id(locationId)
-        if (!location) throw new NotFound("Shipment Location not found")
+        if (!location) throw new AppError("Shipment Location not found", AppError.ErrorCodes.NotFound)
 
         location.remove()
+
+        await shipmentDocument.save()
+    }
+
+    public async pushImage(trackingId: string, imageData: ShipmentPushImageDto) {
+        const shipment = await this.findOrFail(trackingId)
+        const shipmentDocument = shipment.raw()
+
+        const image = shipmentDocument.images.create(imageData)
+        shipmentDocument.images.push(image)
+
+        await shipmentDocument.save()
+
+        return new ShipmentImageResource(image)
+    }
+
+    public async deleteImage(trackingId: string, imageId: string) {
+        const shipment = await this.findOrFail(trackingId)
+        const shipmentDocument = shipment.raw()
+
+        const image = shipmentDocument.images.id(imageId)
+        if (!image) throw new AppError("Shipment Image not found", AppError.ErrorCodes.NotFound)
+
+        await this.mediaService.destroy(image.cloudId)
+
+        image.remove()
 
         await shipmentDocument.save()
     }

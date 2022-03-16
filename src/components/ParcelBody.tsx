@@ -2,6 +2,7 @@ import { useState } from "react"
 import { format } from "date-fns"
 import { parseStatus } from "@/utils/shipment"
 import ParcelProgress from "./ParcelProgress"
+import ParcelImages from "./ParcelImages"
 import { Shipment } from "@/types/shipment"
 
 const ParcelBody = ({ shipment }: { shipment: Shipment }) => {
@@ -9,21 +10,23 @@ const ParcelBody = ({ shipment }: { shipment: Shipment }) => {
 
     return (
         <div className="text-center mt-12 mx-auto w-full sm:w-8/12">
-            {
-                shipment.arrivalDate && false ? (
-                    <div>
-                        <h3 className="text-2xl sm:text-4xl m-0 mb-2 font-light">Delivered</h3>
-                        <h2 className="text-2xl sm:text-4xl m-0 font-light">{format(new Date(shipment.arrivalDate), "EEEE dd/MM/yyyy")} at {format(new Date(shipment.arrivalDate), "hh:mm a")}</h2>
-                    </div>
-                ) : (
-                    <div>
-                        <h3 className="text-2xl sm:text-4xl m-0 mb-2 font-light">Scheduled delivery:</h3>
-                        <h2 className="text-2xl sm:text-4xl m-0 font-light">{format(new Date(shipment.scheduledDate), "EEEE dd/MM/yyyy")} by end of day</h2>
-                    </div>
-                )
-            }
+            <div className="px-2">
+                {
+                    shipment.arrivalDate && false ? (
+                        <div>
+                            <h3 className="text-2xl sm:text-4xl m-0 mb-2 font-light">Delivered</h3>
+                            <h2 className="text-2xl sm:text-4xl m-0 font-light">{format(new Date(shipment.arrivalDate), "EEEE dd/MM/yyyy")} at {format(new Date(shipment.arrivalDate), "hh:mm a")}</h2>
+                        </div>
+                    ) : (
+                        <div>
+                            <h3 className="text-2xl sm:text-4xl m-0 mb-2 font-light">Scheduled delivery:</h3>
+                            <h2 className="text-2xl sm:text-4xl m-0 font-light">{format(new Date(shipment.scheduledDate), "EEEE dd/MM/yyyy")} by end of day</h2>
+                        </div>
+                    )
+                }
 
-            <ParcelProgress progress={shipment.status} />
+                <ParcelProgress progress={shipment.status} />
+            </div>
 
             <h2 className="uppercase text-sm font-bold">{parseStatus(shipment.status)}</h2>
             <p className="text-xl font-light">{shipment.locations[0] ? shipment.locations[0].comment : "On FedEx vehicle for delivery"}</p>
@@ -48,6 +51,12 @@ const ParcelBody = ({ shipment }: { shipment: Shipment }) => {
                     <p className="uppercase font-thin">{shipment.receiver.address}</p>
                 </div>
             </div>
+
+            <h2 className="text-2xl sm:text-4xl m-0 my-7 font-light">
+                {shipment.desc}
+            </h2>
+
+            <ParcelImages images={shipment.images} />
         </div>
     )
 }

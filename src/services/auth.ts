@@ -1,6 +1,5 @@
-import { Unauthorized } from "http-errors"
 import { Inject } from "@/utils/di"
-import { Catch } from "@/utils/error"
+import { AppError, Catch } from "@/utils/error"
 import JwtService from "@/services/jwt"
 import AdminService from "@/services/admin"
 
@@ -12,7 +11,7 @@ export default class AuthService {
     ) { }
 
     // Authenticate admin
-    @Catch(new Unauthorized("Invalid credentials"))
+    @Catch(new AppError("Invalid credentials", AppError.ErrorCodes.Unauthorized))
     public async authenticate(email: string, password: string) {
         const admin = await this.adminService.findOrFail(email, password)
 

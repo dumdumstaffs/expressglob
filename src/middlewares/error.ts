@@ -1,17 +1,16 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { ErrorHandler } from "next-connect"
-import { CustomError, ValidationError } from "@/utils/error"
+import { AppError, ValidationError } from "@/utils/error"
 
 export const Error: ErrorHandler<NextApiRequest, NextApiResponse> = (err, req, res, next) => {
-
     if (err instanceof ValidationError) {
-        return res.status(422).send(err.toJson())
+        return res.status(err.status).send(err)
     }
-    if (err instanceof CustomError) {
-        return res.status(err.status).send(err.message)
+    if (err instanceof AppError && !err.passthrough) {
+        return res.status(err.status).send(err)
     }
-    res.status(err?.status || 500).json({
-        status: err?.status || 500,
-        message: err?.message || "Something went wrong",
+    res.status(500).json({
+        status: 500,
+        message: "Something went wrong",
     })
 }

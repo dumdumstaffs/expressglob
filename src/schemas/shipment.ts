@@ -44,6 +44,11 @@ export default class ShipmentSchema {
     })
 
     public static updateLocation: yup.SchemaOf<ShipmentUpdateLocationDtoWithDate> = ShipmentSchema.pushLocation.shape({})
+
+    public static pushImage: yup.SchemaOf<ShipmentPushImageDto> = yup.object({
+        cloudId: yup.string().required(),
+        url: yup.string().required()
+    })
 }
 
 export interface ShipmentCreateDto {
@@ -81,3 +86,8 @@ export type ShipmentPushLocationDtoWithDate = WithDate<ShipmentPushLocationDto, 
 
 export interface ShipmentUpdateLocationDto extends Omit<Location, "id"> { }
 export type ShipmentUpdateLocationDtoWithDate = WithDate<ShipmentUpdateLocationDto, "date">
+
+export interface ShipmentPushImageDto {
+    cloudId: string
+    url: string
+}

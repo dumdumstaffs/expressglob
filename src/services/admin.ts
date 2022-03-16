@@ -1,6 +1,6 @@
 import { NextApiRequest } from "next"
-import { Conflict, Unauthorized } from "http-errors"
 import { Inject } from "@/utils/di"
+import { AppError } from "@/utils/error"
 import { Admin, AdminPaginatedCollection, AdminResource } from "@/models/admin"
 import { AdminCreateDto } from "@/schemas/admin"
 
@@ -14,22 +14,22 @@ export default class AdminService {
 
     public async findByIdOrFail(id: string, password?: string) {
         const admin = await Admin.findById(id)
-        if (!admin) throw new Unauthorized("Admin not found")
+        if (!admin) throw new AppError("Admin not found", AppError.ErrorCodes.NotFound)
 
         if (password) {
             const validPassword = await admin.validatePassword(password)
-            if (!validPassword) throw new Unauthorized("Invalid credentials")
+            if (!validPassword) throw new AppError("Invalid credentials", AppError.ErrorCodes.Unauthorized)
         }
         return new AdminResource(admin)
     }
 
     public async findOrFail(email: string, password?: string) {
         const admin = await Admin.findOne({ email })
-        if (!admin) throw new Unauthorized("Admin not found")
+        if (!admin) throw new AppError("Admin not found", AppError.ErrorCodes.NotFound)
 
         if (password) {
             const validPassword = await admin.validatePassword(password)
-            if (!validPassword) throw new Unauthorized("Invalid credentials")
+            if (!validPassword) throw new AppError("Invalid credentials", AppError.ErrorCodes.Unauthorized)
         }
         return new AdminResource(admin)
     }
@@ -41,7 +41,7 @@ export default class AdminService {
             .then(() => true)
             .catch(() => false)
 
-        if (exists) throw new Conflict("Admin already exists")
+        if (exists) throw new AppError("Admin already exists", AppError.ErrorCodes.Conflict)
 
         const { confirmPassword, ...adminData } = adminCreateData
 

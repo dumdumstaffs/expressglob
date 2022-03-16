@@ -2,7 +2,7 @@ import { NextApiRequest } from "next"
 import { Model, Query, Types } from "mongoose"
 import { FilterExpression } from "@/utils/models"
 import { PaginatedResponse, WithDate } from "@/types"
-import { AddressInfo, Location, Shipment } from "@/types/shipment"
+import { AddressInfo, Image, Location, Shipment } from "@/types/shipment"
 
 // document dates
 type ShipmentDates = "shipDate" | "scheduledDate" | "arrivalDate" | "createdAt" | "updatedAt"
@@ -15,6 +15,7 @@ interface ShipmentOverrides {
     shipper: Types.Subdocument<null> & AddressInfo
     receiver: Types.Subdocument<null> & AddressInfo
     locations: Types.DocumentArray<ShipmentLocationDocument>
+    images: Types.DocumentArray<ShipmentImageDocument>
 }
 
 // query helpers
@@ -31,5 +32,6 @@ interface ShipmentQueryHelpers {
 export interface ShipmentModel extends Model<ShipmentDocument, ShipmentQueryHelpers, ShipmentOverrides> { }
 
 // nested fields
-export type ShipmentAddressInfoDocument = AddressInfo
 export type ShipmentLocationDocument = WithDate<Location, "date">
+export type ShipmentImageDocument = Image
+export type ShipmentAddressInfoDocument = AddressInfo

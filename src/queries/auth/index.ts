@@ -1,8 +1,8 @@
 import { useQuery } from "react-query";
-import * as authRequests from "@/requests/auth"
+import { AuthRequests } from "./requests"
 
 export const AuthQueryKey = ["profile"]
 
-export const useAuth = () => useQuery(AuthQueryKey, authRequests.getProfile)
+export const useAuth = () => useQuery(AuthQueryKey, AuthRequests.getProfile)
 
 export * from "./mutations"

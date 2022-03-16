@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
-import * as adminRequests from "@/requests/admin"
 import { AdminQueryKey } from ".";
+import { AdminRequests } from "./requests"
 
 export const useCreateAdminMutation = () => {
     const queryClient = useQueryClient()
 
-    const mutation = useMutation(adminRequests.create, {
+    const mutation = useMutation(AdminRequests.create, {
 
         onSuccess() {
             return queryClient.invalidateQueries(AdminQueryKey)
@@ -14,7 +14,7 @@ export const useCreateAdminMutation = () => {
 
     })
 
-    const axiosError = mutation.error && axios.isAxiosError(mutation.error) ? mutation.error : null
+    const axiosError = axios.isAxiosError(mutation.error) ? mutation.error : null
 
     return { ...mutation, axiosError }
 }
@@ -22,7 +22,7 @@ export const useCreateAdminMutation = () => {
 export const useRemoveAdminMutation = () => {
     const queryClient = useQueryClient()
 
-    const mutation = useMutation(adminRequests.remove, {
+    const mutation = useMutation(AdminRequests.remove, {
 
         onSuccess() {
             return queryClient.invalidateQueries(AdminQueryKey)

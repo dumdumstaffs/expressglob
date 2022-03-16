@@ -50,7 +50,7 @@ export const UpdateLocation = ({ shipment, locationId }: { shipment: Shipment, l
 
             <div className="mt-12">
                 <Button type="submit" loading={updateShipmentLocationMutation.isLoading}>
-                    Update
+                    Update Location
                 </Button>
             </div>
             <div className="mt-12">

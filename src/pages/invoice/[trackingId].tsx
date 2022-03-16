@@ -1,133 +1,282 @@
-import { useEffect, useState } from "react";
+import { HTMLAttributes } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { format } from "date-fns";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { Loader, LoaderError } from "@/components/Loader";
 import { parseService, parseStatus } from "@/utils/shipment";
 import { useShipment } from "@/queries/shipments";
 
 export default function Invoice() {
-    const [printed, setPrinted] = useState(false)
+    const { width: windowWidth, height: windowHeight } = useWindowDimensions()
 
     const router = useRouter()
     const { trackingId } = router.query
 
     const shipment = useShipment(trackingId as string | undefined)
 
-    useEffect(() => {
-        if (!shipment.isSuccess) return
-
-        const print = setTimeout(() => {
-            if (!printed) window.print()
-            setPrinted(true)
-        }, 500)
-
-        return () => {
-            clearTimeout(print)
-        }
-
-    }, [shipment])
+    const width = Math.min(windowWidth, 414)
+    const height = Math.min(windowHeight, width * 1.45)
 
     if (shipment.isLoading) return <Loader />
     if (shipment.isError) return <LoaderError message="Package not found" />
 
     if (shipment.isSuccess) return (
-        <div className="bg-gray-100 p-4">
-            <div className="max-w-xl mx-auto print:max-w-none p-4 bg-white print-main">
-                <div className="mb-6">
-                    <Image src="/images/plain-logo.png" width={85.33} height={48} />
+        <div className="min-h-screen">
+            <div className="mx-auto py-1 px-2 bg-white overflow-scroll flex flex-col" style={{ width, height }}>
+                <div className="m-0 flex items-center justify-between">
+                    <Image src="/images/plain-logo.png" width={53.33} height={30} />
+                    <a download href={`/api/shipments/${trackingId}/invoice`} className="download bg-orange-500 px-3 py-2 text-3xs text-white font-bold">Download</a>
                 </div>
 
-                <div className="space-y-4 mb-4">
-                    <h3 className="text-xs m-0">{format(new Date(shipment.data.shipDate), "MMMM MM, yyyy")}</h3>
-                    <h3 className="text-xs m-0">Dear Customer,</h3>
-                    <p className="text-xs m-0">The following is the invoice for the package number <b>{shipment.data.trackingId}</b></p>
+                <div className="text-2xs m-0 p-0 mb-1">Commercial Invoice {windowWidth} x {windowHeight}</div>
+
+                <div className="flex-grow">
+                    <div className="border-2 border-b-[1px] border-solid h-[35%]">
+                        <div className="flex h-full">
+                            <Box className="w-[28%] flex-grow h-full border-r-2">
+                                <Box center className="h-[15%] border-b-2">
+                                    <Text caps bold>Track: {shipment.data.trackingId}</Text>
+                                </Box>
+                                <Box className="h-[40%] border-b-2 bg-gray-800">
+                                </Box>
+                                <Box center className="h-[15%] border-b-2">
+                                    <Text caps bold>Receiver Name:</Text>
+                                </Box>
+                                <Box center className="h-[15%] border-b-2">
+                                    <Text caps bold>Receiver Address:</Text>
+                                </Box>
+                                <Box center className="h-[15%]">
+                                    <Text caps bold>Receiver Email:</Text>
+                                </Box>
+                            </Box>
+                            <Box className="w-[72%] h-full">
+                                <Box center className="h-[15%] border-b-2">
+                                    <Text>
+                                        <span className="uppercase font-bold">Courier Package: </span>
+                                        <span className="font-extrabold">Parcel</span>
+                                    </Text>
+                                </Box>
+                                <Box center className="h-[40%] border-b-2 bg-blue-800">
+                                    <Text className="text-gray-200 tracking-wide leading-3">
+                                        Our shipping company ensures that the commodities are transported from
+                                        one distant place to the other through different transporting mediums. Our
+                                        shipping company ensures that the professional commodities are
+                                        transported to different locations in secure mode.
+                                    </Text>
+                                </Box>
+                                <Box className="h-[45%] p-2 flex flex-col items-start justify-between">
+                                    <Text>{shipment.data.receiver.name}</Text>
+                                    <Text>{shipment.data.receiver.streetAddress}, {shipment.data.receiver.address}</Text>
+                                    <Text>{shipment.data.receiver.email}</Text>
+                                </Box>
+                            </Box>
+                        </div>
+                    </div>
+                    <div className="border-2 border-b-[1px] border-solid h-[40%]">
+                        <div className="flex h-full">
+                            <Box className="w-2/6 h-full border-r-2">
+                                <Box center className="h-[13.33%] border-b-2">
+                                    <Text caps bold>Sender Name:</Text>
+                                </Box>
+                                <Box center className="h-[20%] border-b-2">
+                                    <Text>{shipment.data.shipper.name}</Text>
+                                </Box>
+                                <Box center className="h-[13.33%] border-b-2">
+                                    <Text caps bold>Quantity</Text>
+                                </Box>
+                                <Box center className="h-[17%] border-b-2"></Box>
+                                <Box center className="h-[13.33%] border-b-2 bg-red-700">
+                                    <Text caps bold className="text-gray-200" >Ship Date: {format(new Date(shipment.data.shipDate), "yyyy-MM-dd")}</Text>
+                                </Box>
+                                <Box center className="h-[23%]">
+                                    <Text>{parseService(shipment.data.service).routines}</Text>
+                                </Box>
+                            </Box>
+                            <Box className="w-2/6 h-full border-r-2">
+                                <Box center className="h-[13.33%] border-b-2">
+                                    <Text caps bold>Sender Address:</Text>
+                                </Box>
+                                <Box center className="h-[20%] border-b-2">
+                                    <Text>{shipment.data.shipper.streetAddress}, {shipment.data.shipper.address}</Text>
+                                </Box>
+                                <Box center className="h-[13.33%] border-b-2">
+                                    <Text caps bold>Expected Delivery Date:</Text>
+                                </Box>
+                                <Box center className="h-[17%] border-b-2">
+                                    <Text>{format(new Date(shipment.data.scheduledDate), "yyyy-MM-dd")}</Text>
+                                </Box>
+                                <Box center className="h-[13.33%] border-b-2 bg-red-700">
+                                    <Text caps bold className="text-gray-200" >Tracking ID: {shipment.data.trackingId}</Text>
+                                </Box>
+                                <Box center className="h-[23%]">
+                                    <Text>3261 West Brooke, NY 11230</Text>
+                                </Box>
+                            </Box>
+                            <Box className="w-2/6 h-full">
+                                <Box center className="h-[13.33%] border-b-2">
+                                    <Text caps bold>Shipment Status:</Text>
+                                </Box>
+                                <Box center className="h-[20%] border-b-2">
+                                    <Text>{parseStatus(shipment.data.status)}</Text>
+                                </Box>
+                                <Box center className="h-[13.33%] border-b-2">
+                                    <Text caps bold>Service Type:</Text>
+                                </Box>
+                                <Box center className="h-[17%] border-b-2">
+                                    <Text>{parseService(shipment.data.service).desc}</Text>
+                                </Box>
+                                <Box center className="h-[13.33%] border-b-2 bg-gray-800">
+                                </Box>
+                                <Box center className="h-[23%]">
+                                    <Text>support@fedex.com</Text>
+                                </Box>
+                            </Box>
+                        </div>
+                    </div>
+                    <div className="border-1 border-solid h-[25%]">
+                        <div className="flex h-full">
+                            <Box className="w-[20%] h-full border-r-2">
+                                <Box center className="h-[40%] border-b-2">
+                                    <Text caps bold>Description:</Text>
+                                </Box>
+                                <Box center className="h-[20%] border-b-2">
+                                    <Text caps bold>Weight:</Text>
+                                </Box>
+                                <Box center className="h-[20%] border-b-2">
+                                    <Text caps bold>Remark:</Text>
+                                </Box>
+                                <Box center className="h-[20%]">
+                                    <Text caps bold>Location:</Text>
+                                </Box>
+                            </Box>
+                            <Box className="flex-grow h-full">
+                                <Box center className="h-[40%] border-b-2 bg-red-700">
+                                    <Text className="text-gray-200">
+                                        <b>RULES AND REGULATIONS</b> <br />
+                                        <i>
+                                            We must obey International convention for the Safety of Life at Sea.
+                                            Obey International Convention for the Prevention of Pollution from Ships.
+                                            Stansards of Training, Certification, and Watchkeeping for Seafares
+                                        </i>
+                                    </Text>
+                                </Box>
+                                <Box center className="h-[20%] border-b-2">
+                                    <Text>{shipment.data.weight}</Text>
+                                </Box>
+                                <Box center className="h-[20%] border-b-2"></Box>
+                                <Box center className="h-[20%]"></Box>
+                            </Box>
+                        </div>
+                    </div>
                 </div>
 
-                <Heading title="Delivery Information" />
-                <div className="">
-                    <div className="grid grid-cols-4">
-                        <div className="">
-                            <Bold>Status:</Bold>
-                        </div>
-                        <div className="">
-                            <Small>{parseStatus(shipment.data.status)}</Small>
-                        </div>
-                        <div className="">
-                            <Bold>Delivery Location:</Bold>
-                        </div>
-                        <div className="">
-                            <Caps>{shipment.data.receiver.address}</Caps>
-                        </div>
-                    </div>
-                    <div className="grid grid-cols-4 mt-4">
-                        <div className="">
-                            <Bold>Signed for by:</Bold>
-                            <Bold>Service type:</Bold>
-                            <Bold>Special Handling</Bold>
-                        </div>
-                        <div className="">
-                            <Caps>{shipment.data.shipper.name}</Caps>
-                            <Small>{parseService(shipment.data.service)?.desc}</Small>
-                            <Small>{parseService(shipment.data.service)?.routines}</Small>
-                        </div>
-                        <div className="">
-                            <Bold>Delivery Date:</Bold>
-                        </div>
-                        <div className="">
-                            <Small>{format(new Date(shipment.data.scheduledDate), "MMM d, yyyy HH:mm")}</Small>
-                        </div>
-                    </div>
+                <div className="h-[14%] flex">
+                    <Box center className="w-1/3 relative justify-end pr-4">
+                        <Image className="monochrome" src="/images/stamp-delivery.jpeg" width={68 * 1.15} height={68} />
+                    </Box>
+                    <Box center className="w-1/3 text-center">
+                        <i className="leading-3 text-3xs block">
+                            *FedEx is consistently recognized as the best shipping company.
+                            <br />
+                            For further information on international delivery contact us @ fedex-intl.com
+                        </i>
+                    </Box>
+                    <Box center className="w-1/3 relative pl-3">
+                        <Image className="monochrome" src="/images/stamp-approved.jpeg" width={75 * 1.177} height={75} />
+                    </Box>
                 </div>
 
-                <p className="text-xs m-0 my-12">
-                    Signature image is available in order to view image and detailed information, the shipper or payor account number of the shipment must be provided
-                </p>
+                <div className="hidden">
+                    <div className="space-y-4 mb-4">
+                        <h3 className="text-xs m-0">{format(new Date(shipment.data.shipDate), "MMMM MM, yyyy")}</h3>
+                        <h3 className="text-xs m-0">Dear Customer,</h3>
+                        <p className="text-xs m-0">The following is the invoice for the package number <b>{shipment.data.trackingId}</b></p>
+                    </div>
 
-                <Heading title="Shipping Information" />
-                <div className="">
-                    <div className="grid grid-cols-4">
-                        <div className="">
-                            <Bold>Tracking Number:</Bold>
+                    <div className="">
+                        <div className="grid grid-cols-4">
+                            <div className="">
+                                <Text>Status:</Text>
+                            </div>
+                            <div className="">
+                                <Text>{parseStatus(shipment.data.status)}</Text>
+                            </div>
+                            <div className="">
+                                <Text>Delivery Location:</Text>
+                            </div>
+                            <div className="">
+                                <Text>{shipment.data.receiver.address}</Text>
+                            </div>
                         </div>
-                        <div className="">
-                            <Small>{shipment.data.trackingId}</Small>
-                            <p></p>
-                        </div>
-                        <div className="">
-                            <Bold>Ship Date:</Bold>
-                        </div>
-                        <div className="">
-                            <Small>{format(new Date(shipment.data.shipDate), "MMM d, yyyy")}</Small>
-                        </div>
-                    </div>
-                    <div className="grid grid-cols-4 mt-4">
-                        <div className="">
-                            <Bold>Recipient:</Bold>
-                            <Caps>{shipment.data.receiver.name}</Caps>
-                            <Caps>{shipment.data.receiver.address}</Caps>
-                        </div>
-                        <div className="">
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div className="">
-                            <Bold>Shipper:</Bold>
-                            <Caps>{shipment.data.shipper.name}</Caps>
-                            <Caps>{shipment.data.shipper.address}</Caps>
-                        </div>
-                        <div className="">
-                            <p></p>
-                            <p></p>
-                            <p></p>
+                        <div className="grid grid-cols-4 mt-4">
+                            <div className="">
+                                <Text>Signed for by:</Text>
+                                <Text>Service type:</Text>
+                                <Text>Special Handling</Text>
+                            </div>
+                            <div className="">
+                                <Text>{shipment.data.shipper.name}</Text>
+                                <Text>{parseService(shipment.data.service)?.desc}</Text>
+                                <Text>{parseService(shipment.data.service)?.routines}</Text>
+                            </div>
+                            <div className="">
+                                <Text>Delivery Date:</Text>
+                            </div>
+                            <div className="">
+                                <Text>{format(new Date(shipment.data.scheduledDate), "MMM d, yyyy HH:mm")}</Text>
+                            </div>
                         </div>
                     </div>
+
+                    <p className="text-xs m-0 my-12">
+                        Signature image is available in order to view image and detailed information, the shipper or payor account number of the shipment must be provided
+                    </p>
+
+                    <div className="">
+                        <div className="grid grid-cols-4">
+                            <div className="">
+                                <Text>Tracking Number:</Text>
+                            </div>
+                            <div className="">
+                                <Text>{shipment.data.trackingId}</Text>
+                                <p></p>
+                            </div>
+                            <div className="">
+                                <Text>Ship Date:</Text>
+                            </div>
+                            <div className="">
+                                <Text>{format(new Date(shipment.data.shipDate), "MMM d, yyyy")}</Text>
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-4 mt-4">
+                            <div className="">
+                                <Text>Recipient:</Text>
+                                <Text>{shipment.data.receiver.name}</Text>
+                                <Text>{shipment.data.receiver.address}</Text>
+                            </div>
+                            <div className="">
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                            </div>
+                            <div className="">
+                                <Text>Shipper:</Text>
+                                <Text>{shipment.data.shipper.name}</Text>
+                                <Text>{shipment.data.shipper.address}</Text>
+                            </div>
+                            <div className="">
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p className="text-xs m-0 my-12">
+                        Thank you for choosing FedEx.
+                    </p>
                 </div>
-
-                <p className="text-xs m-0 my-12">
-                    Thank you for choosing FedEx.
-                </p>
             </div>
         </div>
     )
@@ -135,20 +284,20 @@ export default function Invoice() {
     return null
 }
 
-const Heading = ({ title }: { title: string }) => (
-    <div className="border-0 border-t-2 border-b-2 border-solid mb-1">
-        <h2 className="text-xs font-bold m-0 pl-2 pt-1">{title}</h2>
-    </div>
+const Text = ({ children, caps, bold, lg, className }: { children: any, caps?: boolean, bold?: boolean, lg?: boolean, className?: string }) => (
+    <p className={`
+        m-0
+        ${lg ? "text-2xs" : "text-3xs"}
+        ${caps ? "uppercase" : ""}
+        ${bold ? "font-bold" : ""}
+        ${className || ""}
+    `}>{children}</p>
 )
 
-const Bold = ({ children }) => (
-    <h4 className="text-xs m-0 font-bold">{children}</h4>
-)
-
-const Small = ({ children }) => (
-    <h4 className="text-xs m-0">{children}</h4>
-)
-
-const Caps = ({ children }) => (
-    <h4 className="text-xs m-0 uppercase">{children}</h4>
+const Box = ({ children, className, center, ...props }: HTMLAttributes<HTMLDivElement> & { center?: boolean }) => (
+    <div {...props} className={`
+        border-solid border-0 text-2xs m-0
+        ${center ? "flex items-center p-1" : ""} 
+        ${className}
+    `}>{children}</div>
 )

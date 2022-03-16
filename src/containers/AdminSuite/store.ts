@@ -2,7 +2,7 @@ import { proxy, useSnapshot } from "valtio";
 
 type Store = {
     trackNew: boolean
-    tab: "history" | "facts" | "update" | "pushLocation" | "updateLocation"
+    tab: "history" | "facts" | "update" | "pushLocation" | "updateLocation" | "images"
     locationId?: string
 }
 
@@ -19,7 +19,7 @@ export const Controller = {
         Store.trackNew = !Store.trackNew
     },
 
-    setTab(tab: "history" | "facts" | "update" | "pushLocation") {
+    setTab(tab: "history" | "facts" | "update" | "pushLocation" | "images") {
         Store.tab = tab
     },
 

@@ -11,7 +11,12 @@ const env = cleanEnv(process.env, {
         desc: "Duration of sessions in days",
     }),
     ADMIN_EMAIL: str(),
-    ADMIN_PASS: str()
+    ADMIN_PASS: str(),
+    APP_EMAIL: str(),
+    APP_ADDRESS: str(),
+    CLOUDINARY_CLOUD_NAME: str(),
+    CLOUDINARY_API_KEY: str(),
+    CLOUDINARY_API_SECRET: str()
 })
 
 export const config = {
@@ -20,6 +25,8 @@ export const config = {
         SECRET: env.APP_SECRET,
         isProd: env.isProd,
         isDev: env.isDev,
+        EMAIL: env.ADMIN_EMAIL,
+        ADDRESS: env.APP_ADDRESS
     },
     database: {
         URI: env.DATABASE_URI,
@@ -30,5 +37,10 @@ export const config = {
     admin: {
         EMAIL: env.ADMIN_EMAIL,
         PASS: env.ADMIN_PASS
+    },
+    cloudinary: {
+        CLOUD_NAME: env.CLOUDINARY_CLOUD_NAME,
+        CLOUD_API_KEY: env.CLOUDINARY_API_KEY,
+        CLOUD_SECRET: env.CLOUDINARY_API_SECRET,
     }
 }

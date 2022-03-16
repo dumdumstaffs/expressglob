@@ -50,6 +50,14 @@ export const UpdateParcel = ({ shipment }: { shipment: Shipment }) => {
     const service = watch("service")
     return (
         <form onSubmit={onSubmit} className="my-12 px-2 sm:px-0">
+            <div className="flex space-x-2 mb-4">
+                <button type="button" onClick={() => Controller.setTab("pushLocation")} className="border-none px-6 py-2 bg-orange-500 text-white text-sm font-bold">
+                    Add Location
+                </button>
+                <button type="button" onClick={() => Controller.setTab("images")} className="border-none px-6 py-2 bg-orange-500 text-white text-sm font-bold">
+                    Manage Images
+                </button>
+            </div>
             <p className="text-gray-600 text-sm font-semibold p-2 sm:p-4">Description</p>
             <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-4 mb-12">
                 <Input label="Description" {...register("desc")} error={errors.desc?.message} />

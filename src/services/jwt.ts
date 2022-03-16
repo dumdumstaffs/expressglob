@@ -1,6 +1,6 @@
 import { config } from "@/utils/config"
 import { Inject } from "@/utils/di"
-import * as Jwt from "@/utils/jwt"
+import Jwt from "@/utils/jwt"
 
 @Inject()
 export default class JwtService {

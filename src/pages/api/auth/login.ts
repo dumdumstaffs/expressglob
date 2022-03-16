@@ -1,14 +1,17 @@
-import { setCookies } from "cookies-next"
-import { config } from "@/utils/config";
 import { Controller, handle, Route } from "@/utils/handler";
 import { TypedRequest, TypedResponse } from "@/types/request";
-import Bootstrap from "@/services/bootstrap";
 import AuthService from "@/services/auth";
+import SessionService from "@/services/session";
+import Bootstrap from "@/services/bootstrap";
 import AuthSchema from "@/schemas/misc/auth";
 
 @Controller()
 class Handler {
-    constructor(private readonly authService: AuthService, private readonly bootstrap: Bootstrap) { }
+    constructor(
+        private readonly authService: AuthService,
+        private readonly sessionService: SessionService,
+        private readonly bootstrap: Bootstrap
+    ) { }
 
     @Route(AuthSchema.login)
     public async post(req: TypedRequest<typeof AuthSchema.login, { trackingId: string }>, res: TypedResponse) {
@@ -19,13 +22,7 @@ class Handler {
         await this.bootstrap.initialize(email, password)
         const token = await this.authService.authenticate(email, password)
 
-        setCookies("token", token, {
-            secure: config.app.isProd,
-            httpOnly: true,
-            sameSite: "strict",
-            maxAge: config.session.LIFETIME * 24 * 60 * 60 * 1000,
-            req, res
-        })
+        this.sessionService.login(token, { req, res })
 
         res.json({ message: "Login successful" })
     }

@@ -2,35 +2,31 @@ interface Target<T> {
     new(...args: any[]): T
 }
 
-type GenericClassDecorator<T> = (target: T) => void
-
-type CacheMap<T> = { [key: symbol]: T }
-
 class Cache {
-    private storage: CacheMap<unknown> = {}
-
     private static MetaDataKey = Symbol("__cacheKey")
 
-    // set a metadata property on the target class
+    // set metadata property on the target class
     public static SetCacheKey<T>(target: Target<T>) {
         const symbol = Symbol()
         Reflect.defineMetadata(Cache.MetaDataKey, symbol, target)
     }
 
-    // get the metadata property on the target class
+    // get metadata property on the target class
     public static GetCacheKey<T>(target: Target<T>): symbol | null {
         const reflectCacheKey = Reflect.getMetadata(Cache.MetaDataKey, target)
         return reflectCacheKey
     }
 
-    // store the target instance in storage if it's key does not exist
+    private storage = new Map<symbol, unknown>()
+
+    // store the target instance in storage if it's key does not exist already
     public store<T>(target: Target<T>, instance: T): void {
         const cacheKey = Cache.GetCacheKey(target)
 
         if (!cacheKey) return
 
-        if (!this.storage[cacheKey]) {
-            this.storage[cacheKey] = instance
+        if (!this.storage.has(cacheKey)) {
+            this.storage.set(cacheKey, instance)
         }
     }
 
@@ -38,15 +34,9 @@ class Cache {
     public retrieve<T>(target: Target<T>): T | null {
         const cacheKey = Cache.GetCacheKey(target)
 
-        if (!cacheKey) {
-            return null
-        }
+        if (!cacheKey) return null
 
-        if (this.storage[cacheKey]) {
-            return this.storage[cacheKey] as T
-        } else {
-            return null
-        }
+        return this.storage.get(cacheKey) as T || null
     }
 }
 
@@ -86,7 +76,7 @@ class DIContainer {
 export const Container = new DIContainer()
 
 // decorates classes as singletons
-export function Inject(): GenericClassDecorator<Target<object>> {
+export function Inject() {
     return (target: Target<object>) => {
         // register in cache
         Cache.SetCacheKey(target)

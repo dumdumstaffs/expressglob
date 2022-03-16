@@ -6,8 +6,6 @@ export const Search = () => {
 
     const onSubmit = () => {
         if (!search || search.length < 2) return
-
-        console.log(search)
     }
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

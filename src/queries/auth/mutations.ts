@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useMutation, useQueryClient } from "react-query";
-import * as authRequests from "@/requests/auth"
 import { AuthQueryKey } from ".";
+import { AuthRequests } from "./requests";
 
 export const useLoginMutation = () => {
     const queryClient = useQueryClient()
     const router = useRouter()
 
-    const mutation = useMutation(authRequests.login, {
+    const mutation = useMutation(AuthRequests.login, {
 
         onMutate() {
             return queryClient.cancelQueries(AuthQueryKey)
@@ -22,7 +22,7 @@ export const useLoginMutation = () => {
 
     })
 
-    const axiosError = mutation.error && axios.isAxiosError(mutation.error) ? mutation.error : null
+    const axiosError = axios.isAxiosError(mutation.error) ? mutation.error : null
 
     return { ...mutation, axiosError }
 }
@@ -31,7 +31,7 @@ export const useLogoutMutation = () => {
     const queryClient = useQueryClient()
     const router = useRouter()
 
-    const mutation = useMutation(authRequests.logout, {
+    const mutation = useMutation(AuthRequests.logout, {
 
         onMutate() {
             return queryClient.cancelQueries(AuthQueryKey)
