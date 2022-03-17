@@ -77,7 +77,7 @@ export const DropdownTrack = ({ tab }: Props) => {
                                                 className="fxg-field__input-text fxg-field__input--required"
                                                 name="trackingNumber"
                                                 required
-                                                title="Enter a FedEx tracking number to review shipping details."
+                                                title="Enter a OptionDelivery tracking number to review shipping details."
                                                 aria-required="true"
                                                 value={state.trackingId}
                                                 onChange={handleChange}

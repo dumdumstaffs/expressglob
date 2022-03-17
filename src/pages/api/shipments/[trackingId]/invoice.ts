@@ -25,7 +25,7 @@ class Handler {
         res.writeHead(200, {
             "Content-type": "image/png",
             "Content-length": buffer.length,
-            "Content-disposition": "attachment; filename=" + "Invoice - " + trackingId
+            "Content-disposition": `attachment; filename=Invoice - ${trackingId}.png`
         })
         res.end(buffer)
     }

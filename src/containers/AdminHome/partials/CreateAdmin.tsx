@@ -100,7 +100,7 @@ export const CreateAdmin = () => {
             </div>
             <form onSubmit={onSubmit} className="tw-form">
                 <h2 className="text-center text-xl font-thin sm:mx-[75px] mt-[20px] mb-[25px]">
-                    Enter up to 30 of your FedEx tracking, door tag, or FedEx Office
+                    Enter up to 30 of your OptionDelivery tracking, door tag, or OptionDelivery Office
                     order numbers (one per line).
                 </h2>
                 <Input label="Email" {...register("email")} error={errors.email?.message} />

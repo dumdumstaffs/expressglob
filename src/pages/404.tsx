@@ -58,10 +58,10 @@ export default function NotFound() {
                                             style={{ height: 25, backgroundColor: "default" }}
                                         />
                                     </div>
-                                    <HelpLink title="Home" href="/home" desc="Go Home" />
-                                    <HelpLink title="Home" href="/home" desc="Go Home" />
-                                    <HelpLink title="Home" href="/home" desc="Go Home" />
-                                    <HelpLink title="Home" href="/home" desc="Go Home" />
+                                    <HelpLink title="Home" href="/home" desc="Go to Homepage" />
+                                    <HelpLink title="Manage Delivery" href="/secure/login" desc="Advanced Shipment services" />
+                                    <HelpLink title="Sign Off Package" href="/secure/login" desc="Sign Package" />
+                                    <HelpLink title="File Claim" href="/secure/login" desc="Prepare Claim" />
                                     <div className="spacer section">
                                         <div
                                             className="fxg-spacer fxg-spacer-hide--tablet"
@@ -86,10 +86,10 @@ export default function NotFound() {
                                             style={{ height: 72, backgroundColor: "default" }}
                                         />
                                     </div>
-                                    <HelpLink title="Home" href="/home" desc="Go Home" />
-                                    <HelpLink title="Home" href="/home" desc="Go Home" />
-                                    <HelpLink title="Home" href="/home" desc="Go Home" />
-                                    <HelpLink title="Home" href="/home" desc="Go Home" />
+                                    <HelpLink title="Account Management Tools" href="/secure/login" desc="Manage Account" />
+                                    <HelpLink title="Design &amp; Print" href="/secure/login" desc="Explore Print, Products &amp; Design" />
+                                    <HelpLink title="Small Business" href="/secure/login" desc="Small Business Center" />
+                                    <HelpLink title="Enterprise" href="/secure/login" desc="Enterprise Tools" />
                                     <div className="spacer section">
                                         <div
                                             className="fxg-spacer fxg-spacer-hide--mobile"

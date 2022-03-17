@@ -35,7 +35,7 @@ export default function Footer() {
                                                                     <div
                                                                         className="fxg-col col-sm-6">
                                                                         <div style={{ backgroundColor: "" }}>
-                                                                            <FooterLink title="About FedEx" href="/about" />
+                                                                            <FooterLink title="About OptionDelivery" href="/about" />
                                                                             <FooterLink title="Our Portfolio" href="/about/company-structure" />
                                                                             <FooterLink title="Investor Relations" href="/about/investors" />
                                                                             <FooterLink title="Careers" href="/about/careers" />
@@ -44,7 +44,7 @@ export default function Footer() {
                                                                     <div
                                                                         className="fxg-col col-sm-6">
                                                                         <div style={{ backgroundColor: "" }}>
-                                                                            <FooterLink title="FedEx Blog" href="/blog" />
+                                                                            <FooterLink title="OptionDelivery Blog" href="/blog" />
                                                                             <FooterLink title="Corporate Responsibility" href="/about/corporate-social-responsibility" />
                                                                             <FooterLink title="Newsroom" href="/newsroom" />
                                                                             <FooterLink title="Contact Us" href="/contact-us" />
@@ -59,13 +59,13 @@ export default function Footer() {
                                                         <div style={{ backgroundColor: "" }}>
                                                             <div className="title_v1 section">
                                                                 <div className="fxg-title fxg-title--default left    ">
-                                                                    More From FedEx
+                                                                    More From OptionDelivery
                                                                 </div>
                                                             </div>
-                                                            <FooterLink title="FedEx Compatible" href="/compatible" />
-                                                            <FooterLink title="FedEx Developer Portal" href="/developers" />
-                                                            <FooterLink title="FedEx Logistics" href="/logistics" />
-                                                            <FooterLink title="FedEx Cross Border" href="/cross-border" />
+                                                            <FooterLink title="OptionDelivery Compatible" href="/compatible" />
+                                                            <FooterLink title="OptionDelivery Developer Portal" href="/developers" />
+                                                            <FooterLink title="OptionDelivery Logistics" href="/logistics" />
+                                                            <FooterLink title="OptionDelivery Cross Border" href="/cross-border" />
                                                             <FooterLink title="ShopRunner" href="/shoprunner" />
                                                         </div>
                                                     </div>
@@ -163,16 +163,16 @@ export default function Footer() {
                                                         <div style={{ backgroundColor: "" }}>
                                                             <div className="title_v1 section">
                                                                 <span className="fxg-title fxg-title--default left    ">
-                                                                    Follow FedEx
+                                                                    Follow OptionDelivery
                                                                 </span>
                                                             </div>
-                                                            <SocialLink href="/contact-us" iconName="email" label="Newsletter Signup" />
-                                                            <SocialLink href="https://www.facebook.com/FedEx/" iconName="facebook" label="FedEx on Facebook" />
-                                                            <SocialLink href="https://twitter.com/fedex" iconName="twitter" label="FedEx on Twitter" />
-                                                            <SocialLink href="http://www.instagram.com/fedex" iconName="instagram" label="FedEx on Instagram" />
-                                                            <SocialLink href="http://www.linkedin.com/company/fedex" iconName="linkedin" label="FedEx on LinkedIn" />
-                                                            <SocialLink href="http://www.youtube.com/fedex" iconName="youtube" label="FedEx on YouTube" />
-                                                            <SocialLink href="https://www.pinterest.com/fedex" iconName="pinterest" label="FedEx on Pinterest" />
+                                                            <SocialLink href="#" iconName="email" label="Newsletter Signup" />
+                                                            <SocialLink href="#" iconName="facebook" label="OptionDelivery on Facebook" />
+                                                            <SocialLink href="#" iconName="twitter" label="OptionDelivery on Twitter" />
+                                                            <SocialLink href="#" iconName="instagram" label="OptionDelivery on Instagram" />
+                                                            <SocialLink href="#" iconName="linkedin" label="OptionDelivery on LinkedIn" />
+                                                            <SocialLink href="#" iconName="youtube" label="OptionDelivery on YouTube" />
+                                                            <SocialLink href="#" iconName="pinterest" label="OptionDelivery on Pinterest" />
                                                         </div>
                                                     </div>
                                                     <div className="fxg-col fxg-col--mt20 fxg-col--mb20 col-sm-2">
@@ -195,7 +195,7 @@ export default function Footer() {
                                                         <div style={{ backgroundColor: "" }}>
                                                             <div className="title_v1 section">
                                                                 <div className="fxg-title fxg-title--default     ">
-                                                                    © FedEx 1995-{new Date().getFullYear()}
+                                                                    © OptionDelivery 1995-{new Date().getFullYear()}
                                                                 </div>
                                                             </div>
                                                         </div>

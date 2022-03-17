@@ -15,9 +15,9 @@ export default function Document() {
                 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 
                 <meta name="og:type" content="website" />
-                <meta name="og:site_name" content="FedEx" />
+                <meta name="og:site_name" content="OptionDelivery" />
                 <meta name="og:url" content="/" />
-                <meta name="og:title" content="The New FedEx.com - Tracking, Shipping &amp; Locations" />
+                <meta name="og:title" content="The New OptionDelivery.com - Tracking, Shipping &amp; Locations" />
                 {/* <meta name="og:description" content="Login to your account or learn more about how to become a better shipper, printing offers, or get inspiration for your small business." /> */}
             </Head>
             <body className="page basicpage">

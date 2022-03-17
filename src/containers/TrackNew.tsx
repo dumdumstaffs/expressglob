@@ -99,7 +99,7 @@ export const TrackNew = ({ url, onTrack }: { url: string, onTrack: () => void })
             </div>
             <form onSubmit={onSubmit} className="mx-auto w-full max-w-[600px]">
                 <h2 className="text-center text-xl font-thin sm:mx-[75px] mt-[20px] mb-[25px]">
-                    Enter up to 30 of your FedEx tracking, door tag, or FedEx Office
+                    Enter up to 30 of your OptionDelivery tracking, door tag, or OptionDelivery Office
                     order numbers (one per line).
                 </h2>
                 <Input label="Tracking Number" {...register("trackingId")} error={errors.trackingId?.message} />

@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react"
 import { Controller } from "../../store"
 
 export const Search = () => {
-    const [search, setSearch] = useState("glee")
+    const [search, setSearch] = useState("")
 
     const onSubmit = () => {
         if (!search || search.length < 2) return

@@ -14,7 +14,7 @@ export function ActionIcons() {
             <div className="advanced_table_v1 table parbase">
                 <div
                     className="fxg-table-wrapper fxg-table--stackable fxg-mobile--hide"
-                    data-emptytext="FedEx - Table Component (Advanced)"
+                    data-emptytext="OptionDelivery - Table Component (Advanced)"
                 >
                     <table
                         // border={0}

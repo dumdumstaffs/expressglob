@@ -8,6 +8,9 @@ module.exports = {
         "2xs": "10px",
         "3xs": "8px",
       },
+      fontFamily: {
+        logo: "'Montserrat', sans-serif"
+      },
       colors: {
         fedex: {
           DEFAULT: "#4d148c",

@@ -72,7 +72,7 @@ export default function Home() {
             href="/fdmenrollment"
             linkText="sign up for free"
             image="/images/fy22_shutterstock_54.jpg"
-            desc="Sign up for FedEx Delivery Manager® to place holds, give delivery instructions, sign remotely, and more. Stay informed with tracking alerts and notifications."
+            desc="Sign up for OptionDelivery Delivery Manager® to place holds, give delivery instructions, sign remotely, and more. Stay informed with tracking alerts and notifications."
           />
           <div className="spacer">
             <div
@@ -116,7 +116,7 @@ export default function Home() {
                     money-back guarantee
                   </a>
                 </Link>{" "}
-                was reinstated for select FedEx Express<sup>®</sup> services
+                was reinstated for select OptionDelivery Express<sup>®</sup> services
                 for U.S. domestic shipments and U.S. export shipments.
               </p>
             </div>

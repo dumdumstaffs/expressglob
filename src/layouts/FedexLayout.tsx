@@ -12,9 +12,9 @@ export default function FedexLayout({ children, title }: Props) {
     return (
         <>
             <Head>
-                <title>{title || "FedEx | Tracking, Shipping, and Locations"}</title>
+                <title>{title || "OptionDelivery | Tracking, Shipping, and Locations"}</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                {/* <meta name="description" content="Use the Fedex.com site to login to your FedEx account, get your tracking status, find a FedEx near you, learn more about how to become a better shipper, get online print offers, or get inspiration for your small business needs. " /> */}
+                {/* <meta name="description" content="Use the Fedex.com site to login to your OptionDelivery account, get your tracking status, find a OptionDelivery near you, learn more about how to become a better shipper, get online print offers, or get inspiration for your small business needs. " /> */}
             </Head>
             <div className="fxg-main-content">
                 <Header />

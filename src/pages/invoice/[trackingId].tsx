@@ -6,8 +6,11 @@ import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { Loader, LoaderError } from "@/components/Loader";
 import { parseService, parseStatus } from "@/utils/shipment";
 import { useShipment } from "@/queries/shipments";
+import { useConfig } from "@/hooks/useConfig";
+import Logo from "@/components/Logo";
 
 export default function Invoice() {
+    const { app } = useConfig()
     const { width: windowWidth, height: windowHeight } = useWindowDimensions()
 
     const router = useRouter()
@@ -25,11 +28,12 @@ export default function Invoice() {
         <div className="min-h-screen">
             <div className="mx-auto py-1 px-2 bg-white overflow-scroll flex flex-col" style={{ width, height }}>
                 <div className="m-0 flex items-center justify-between">
-                    <Image src="/images/plain-logo.png" width={53.33} height={30} />
+                    {/* <Image src="/images/plain-logo.png" width={53.33} height={30} /> */}
+                    <Logo invert />
                     <a download href={`/api/shipments/${trackingId}/invoice`} className="download bg-orange-500 px-3 py-2 text-3xs text-white font-bold">Download</a>
                 </div>
 
-                <div className="text-2xs m-0 p-0 mb-1">Commercial Invoice {windowWidth} x {windowHeight}</div>
+                <div className="text-2xs m-0 p-0 mb-1">Commercial Invoice</div>
 
                 <div className="flex-grow">
                     <div className="border-2 border-b-[1px] border-solid h-[35%]">
@@ -129,7 +133,7 @@ export default function Invoice() {
                                 <Box center className="h-[13.33%] border-b-2 bg-gray-800">
                                 </Box>
                                 <Box center className="h-[23%]">
-                                    <Text>support@fedex.com</Text>
+                                    <Text>{app.emailAlias}</Text>
                                 </Box>
                             </Box>
                         </div>
@@ -177,105 +181,14 @@ export default function Invoice() {
                     </Box>
                     <Box center className="w-1/3 text-center">
                         <i className="leading-3 text-3xs block">
-                            *FedEx is consistently recognized as the best shipping company.
+                            *OptionDelivery is consistently recognized as the best shipping company.
                             <br />
-                            For further information on international delivery contact us @ fedex-intl.com
+                            For further information on international delivery contact us @ {app.emailAlias}
                         </i>
                     </Box>
                     <Box center className="w-1/3 relative pl-3">
                         <Image className="monochrome" src="/images/stamp-approved.jpeg" width={75 * 1.177} height={75} />
                     </Box>
-                </div>
-
-                <div className="hidden">
-                    <div className="space-y-4 mb-4">
-                        <h3 className="text-xs m-0">{format(new Date(shipment.data.shipDate), "MMMM MM, yyyy")}</h3>
-                        <h3 className="text-xs m-0">Dear Customer,</h3>
-                        <p className="text-xs m-0">The following is the invoice for the package number <b>{shipment.data.trackingId}</b></p>
-                    </div>
-
-                    <div className="">
-                        <div className="grid grid-cols-4">
-                            <div className="">
-                                <Text>Status:</Text>
-                            </div>
-                            <div className="">
-                                <Text>{parseStatus(shipment.data.status)}</Text>
-                            </div>
-                            <div className="">
-                                <Text>Delivery Location:</Text>
-                            </div>
-                            <div className="">
-                                <Text>{shipment.data.receiver.address}</Text>
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-4 mt-4">
-                            <div className="">
-                                <Text>Signed for by:</Text>
-                                <Text>Service type:</Text>
-                                <Text>Special Handling</Text>
-                            </div>
-                            <div className="">
-                                <Text>{shipment.data.shipper.name}</Text>
-                                <Text>{parseService(shipment.data.service)?.desc}</Text>
-                                <Text>{parseService(shipment.data.service)?.routines}</Text>
-                            </div>
-                            <div className="">
-                                <Text>Delivery Date:</Text>
-                            </div>
-                            <div className="">
-                                <Text>{format(new Date(shipment.data.scheduledDate), "MMM d, yyyy HH:mm")}</Text>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p className="text-xs m-0 my-12">
-                        Signature image is available in order to view image and detailed information, the shipper or payor account number of the shipment must be provided
-                    </p>
-
-                    <div className="">
-                        <div className="grid grid-cols-4">
-                            <div className="">
-                                <Text>Tracking Number:</Text>
-                            </div>
-                            <div className="">
-                                <Text>{shipment.data.trackingId}</Text>
-                                <p></p>
-                            </div>
-                            <div className="">
-                                <Text>Ship Date:</Text>
-                            </div>
-                            <div className="">
-                                <Text>{format(new Date(shipment.data.shipDate), "MMM d, yyyy")}</Text>
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-4 mt-4">
-                            <div className="">
-                                <Text>Recipient:</Text>
-                                <Text>{shipment.data.receiver.name}</Text>
-                                <Text>{shipment.data.receiver.address}</Text>
-                            </div>
-                            <div className="">
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                            </div>
-                            <div className="">
-                                <Text>Shipper:</Text>
-                                <Text>{shipment.data.shipper.name}</Text>
-                                <Text>{shipment.data.shipper.address}</Text>
-                            </div>
-                            <div className="">
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p className="text-xs m-0 my-12">
-                        Thank you for choosing FedEx.
-                    </p>
                 </div>
             </div>
         </div>

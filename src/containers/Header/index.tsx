@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Logo from "@/components/Logo"
 import { Sidebar, Search, Userbar } from "./partials/bars"
 import { useStore, Controller } from "./store"
 
@@ -20,15 +21,9 @@ export default function Header() {
                                             <a
                                                 className="fxg-header__logo_wrapper"
                                                 target="_self"
-                                                aria-label="FedEx Logo"
+                                                aria-label="OptionDelivery Logo"
                                             >
-                                                <img
-                                                    src="/images/logo.png"
-                                                    width="100%"
-                                                    height="100%"
-                                                    className="fxg-header__logo"
-                                                    alt="FedEx Logo"
-                                                />
+                                                <Logo />
                                             </a>
                                         </Link>
                                         {/* DROPDOWN */}
