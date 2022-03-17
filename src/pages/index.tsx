@@ -3,11 +3,14 @@ import Script from "next/script";
 import FedexLayout from "@/layouts/FedexLayout";
 import Hero from "@/containers/Hero";
 import { ActionIcons, FeaturedOffer, PocBanner, PodsCarousel, PodsRow } from "@/containers/Sections";
+import { useConfig } from "@/hooks/useConfig";
 
 export default function Home() {
+  const { chatWidget } = useConfig()
+
   return (
     <FedexLayout>
-      <Script async src="//code.tidio.co/sz1bltesktxglzebth9iazexuonzgzvh.js" />
+      {chatWidget && <Script async src={chatWidget} />}
       <Hero />
       <div className="container responsivegrid fxg-wrapper aem-GridColumn aem-GridColumn--default--12">
         <div className="cmp-container">

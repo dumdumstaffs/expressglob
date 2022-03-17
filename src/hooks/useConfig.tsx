@@ -7,7 +7,8 @@ const publicEnv = {
     cloudinary: {
         publicUrl: process.env.CLOUDINARY_PUBLIC_UPLOAD_URL,
         uploadPreset: process.env.CLOUDINARY_PUBLIC_UPLOAD_PRESET
-    }
+    },
+    chatWidget: process.env.CHAT_WIDGET
 } as const
 
 const ConfigContext = createContext<typeof publicEnv | null>(null)

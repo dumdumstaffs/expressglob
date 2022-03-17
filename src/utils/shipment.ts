@@ -38,52 +38,52 @@ export const parseHistory = (locations: Shipment["locations"]): ShipmentHistory 
 
 export const shippingServices = [
     {
-        name: "fedex-ground",
+        name: "ground",
         desc: "OptionDelivery Ground®",
         routines: "Delivers by end of day (business addresses only)"
     },
     {
-        name: "fedex-home-delivery",
+        name: "home-delivery",
         desc: "OptionDelivery Home Delivery®",
         routines: "Delivery between 9 a.m. and 8 p.m., Mon.-Sat. in 1-5 business days (residential addresses only)"
     },
     {
-        name: "fedex-same-day",
+        name: "same-day",
         desc: "OptionDelivery SameDay®",
         routines: "Door-to-door delivery in just hours"
     },
     {
-        name: "fedex-intl-next-flight",
+        name: "intl-next-flight",
         desc: "OptionDelivery® International Next Flight",
         routines: "Delivery in just hours, depending on flight availability"
     },
     {
-        name: "fedex-intl-first",
+        name: "intl-first",
         desc: "OptionDelivery International First®",
         routines: "Delivers by end of day (business addresses only)"
     },
     {
-        name: "fedex-intl-priority",
+        name: "intl-priority",
         desc: "OptionDelivery International Priority",
         routines: "Delivery typically in 1, 2 or 3 business days to more than 220 countries and territories"
     },
     {
-        name: "fedex-intl-ground",
+        name: "intl-ground",
         desc: "OptionDelivery International Ground®",
         routines: "Delivery by end of business day typically in 2-7 business days  (delivery to Canada only)"
     },
     {
-        name: "fedex-first-overnight",
+        name: "first-overnight",
         desc: "OptionDelivery First Overnight®",
         routines: "Delivery first thing the next business-day morning by 8, 8:30, 9 or 9: 30 a.m.to most areas and by 10 a.m., 11 a.m.or 2 p.m.to extended areas"
     },
     {
-        name: "fedex-priority-overnight",
+        name: "priority-overnight",
         desc: "OptionDelivery Priority Overnight®",
         routines: "Next-business-day delivery by 10: 30 a.m.to most areas and by noon, 4: 30 p.m.or 5 p.m.to some rural areas"
     },
     {
-        name: "fedex-standard-overnight",
+        name: "standard-overnight",
         desc: "OptionDelivery Standard Overnight®",
         routines: "Delivery the next business day in the afternoon by 3 p.m.to most areas and by 4: 30 p.m. to some rural areas(by 8 p.m. to residences)"
     }
