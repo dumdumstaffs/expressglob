@@ -94,7 +94,7 @@ export default function Invoice() {
                                     <Text caps bold className="text-gray-200" >Ship Date: {format(new Date(shipment.data.shipDate), "yyyy-MM-dd")}</Text>
                                 </Box>
                                 <Box center className="h-[23%]">
-                                    <Text>{parseService(shipment.data.service).routines}</Text>
+                                    <Text>{parseService(shipment.data.service)?.routines}</Text>
                                 </Box>
                             </Box>
                             <Box className="w-2/6 h-full border-r-2">
@@ -128,7 +128,7 @@ export default function Invoice() {
                                     <Text caps bold>Service Type:</Text>
                                 </Box>
                                 <Box center className="h-[17%] border-b-2">
-                                    <Text>{parseService(shipment.data.service).desc}</Text>
+                                    <Text>{parseService(shipment.data.service)?.desc}</Text>
                                 </Box>
                                 <Box center className="h-[13.33%] border-b-2 bg-gray-800">
                                 </Box>
