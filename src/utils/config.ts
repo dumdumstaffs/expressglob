@@ -13,10 +13,13 @@ const env = cleanEnv(process.env, {
     ADMIN_EMAIL: str(),
     ADMIN_PASS: str(),
     APP_EMAIL: str(),
+    APP_EMAIL_ALIAS: str(),
     APP_ADDRESS: str(),
     CLOUDINARY_CLOUD_NAME: str(),
     CLOUDINARY_API_KEY: str(),
-    CLOUDINARY_API_SECRET: str()
+    CLOUDINARY_API_SECRET: str(),
+    CLOUDINARY_PUBLIC_UPLOAD_URL: str(),
+    CLOUDINARY_PUBLIC_UPLOAD_PRESET: str(),
 })
 
 export const config = {
@@ -25,7 +28,8 @@ export const config = {
         SECRET: env.APP_SECRET,
         isProd: env.isProd,
         isDev: env.isDev,
-        EMAIL: env.ADMIN_EMAIL,
+        EMAIL: env.APP_EMAIL,
+        EMAIL_ALIAS: env.APP_EMAIL_ALIAS,
         ADDRESS: env.APP_ADDRESS
     },
     database: {
@@ -42,5 +46,7 @@ export const config = {
         CLOUD_NAME: env.CLOUDINARY_CLOUD_NAME,
         CLOUD_API_KEY: env.CLOUDINARY_API_KEY,
         CLOUD_SECRET: env.CLOUDINARY_API_SECRET,
+        PUBLIC_UPLOAD_URL: env.CLOUDINARY_PUBLIC_UPLOAD_URL,
+        PUBLIC_UPLOAD_PRESET: env.CLOUDINARY_PUBLIC_UPLOAD_PRESET,
     }
 }
