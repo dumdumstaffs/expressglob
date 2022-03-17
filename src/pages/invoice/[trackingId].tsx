@@ -114,7 +114,7 @@ export default function Invoice() {
                                     <Text caps bold className="text-gray-200" >Tracking ID: {shipment.data.trackingId}</Text>
                                 </Box>
                                 <Box center className="h-[23%]">
-                                    <Text>3261 West Brooke, NY 11230</Text>
+                                    <Text>{app.address}</Text>
                                 </Box>
                             </Box>
                             <Box className="w-2/6 h-full">

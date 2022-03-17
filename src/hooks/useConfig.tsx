@@ -2,7 +2,8 @@ import { createContext, ReactNode, useContext, useMemo } from 'react'
 
 const publicEnv = {
     app: {
-        emailAlias: process.env.APP_EMAIL_ALIAS
+        emailAlias: process.env.APP_EMAIL_ALIAS,
+        address: process.env.APP_ADDRESS
     },
     cloudinary: {
         publicUrl: process.env.CLOUDINARY_PUBLIC_UPLOAD_URL,
