@@ -28,7 +28,6 @@ export default function Invoice() {
         <div className="min-h-screen">
             <div className="mx-auto py-1 px-2 bg-white overflow-scroll flex flex-col" style={{ width, height }}>
                 <div className="m-0 flex items-center justify-between">
-                    {/* <Image src="/images/plain-logo.png" width={53.33} height={30} /> */}
                     <Logo invert />
                     <a download href={`/api/shipments/${trackingId}/invoice`} className="download bg-orange-500 px-3 py-2 text-3xs text-white font-bold">Download</a>
                 </div>
@@ -181,7 +180,7 @@ export default function Invoice() {
                     </Box>
                     <Box center className="w-1/3 text-center">
                         <i className="leading-3 text-3xs block">
-                            *OptionDelivery is consistently recognized as the best shipping company.
+                            *ExpressGlob is consistently recognized as the best shipping company.
                             <br />
                             For further information on international delivery contact us @ {app.emailAlias}
                         </i>

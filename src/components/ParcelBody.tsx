@@ -29,7 +29,7 @@ const ParcelBody = ({ shipment }: { shipment: Shipment }) => {
             </div>
 
             <h2 className="uppercase text-sm font-bold">{parseStatus(shipment.status)}</h2>
-            <p className="text-xl font-light">{shipment.locations[0] ? shipment.locations[0].comment : "On OptionDelivery vehicle for delivery"}</p>
+            <p className="text-xl font-light">{shipment.locations[0] ? shipment.locations[0].comment : "On ExpressGlob vehicle for delivery"}</p>
             <p className="uppercase font-light text-lg">{shipment.receiver.address}</p>
             <a onClick={() => setStatusUpdates(s => !s)} className="block mb-10 uppercase text-sm font-bold tracking-widest mt-4 cursor-pointer" aria-label="Get Status Updates">
                 Get Status Updates

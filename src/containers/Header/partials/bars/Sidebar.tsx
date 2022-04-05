@@ -46,7 +46,7 @@ export const Sidebar = () => {
                     items={[
                         { title: "New Customer Center", href: "/get-started" },
                         { title: "Small Business Center", href: "/small-business" },
-                        { title: "OptionDelivery Service Guide", href: "/service-guide" },
+                        { title: "ExpressGlob Service Guide", href: "/service-guide" },
                         { title: "Account Management Tools", href: "/create-account/account-management" },
                         { title: "File a Claim", href: "/customer-support/claims" },
                         { title: "Customer Support", href: "/customer-support" },

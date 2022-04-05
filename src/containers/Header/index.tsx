@@ -21,7 +21,7 @@ export default function Header() {
                                             <a
                                                 className="fxg-header__logo_wrapper"
                                                 target="_self"
-                                                aria-label="OptionDelivery Logo"
+                                                aria-label="ExpressGlob Logo"
                                             >
                                                 <Logo />
                                             </a>

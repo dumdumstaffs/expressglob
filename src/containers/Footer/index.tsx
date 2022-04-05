@@ -35,7 +35,7 @@ export default function Footer() {
                                                                     <div
                                                                         className="fxg-col col-sm-6">
                                                                         <div style={{ backgroundColor: "" }}>
-                                                                            <FooterLink title="About OptionDelivery" href="/about" />
+                                                                            <FooterLink title="About ExpressGlob" href="/about" />
                                                                             <FooterLink title="Our Portfolio" href="/about/company-structure" />
                                                                             <FooterLink title="Investor Relations" href="/about/investors" />
                                                                             <FooterLink title="Careers" href="/about/careers" />
@@ -44,7 +44,7 @@ export default function Footer() {
                                                                     <div
                                                                         className="fxg-col col-sm-6">
                                                                         <div style={{ backgroundColor: "" }}>
-                                                                            <FooterLink title="OptionDelivery Blog" href="/blog" />
+                                                                            <FooterLink title="ExpressGlob Blog" href="/blog" />
                                                                             <FooterLink title="Corporate Responsibility" href="/about/corporate-social-responsibility" />
                                                                             <FooterLink title="Newsroom" href="/newsroom" />
                                                                             <FooterLink title="Contact Us" href="/contact-us" />
@@ -59,13 +59,13 @@ export default function Footer() {
                                                         <div style={{ backgroundColor: "" }}>
                                                             <div className="title_v1 section">
                                                                 <div className="fxg-title fxg-title--default left    ">
-                                                                    More From OptionDelivery
+                                                                    More From ExpressGlob
                                                                 </div>
                                                             </div>
-                                                            <FooterLink title="OptionDelivery Compatible" href="/compatible" />
-                                                            <FooterLink title="OptionDelivery Developer Portal" href="/developers" />
-                                                            <FooterLink title="OptionDelivery Logistics" href="/logistics" />
-                                                            <FooterLink title="OptionDelivery Cross Border" href="/cross-border" />
+                                                            <FooterLink title="ExpressGlob Compatible" href="/compatible" />
+                                                            <FooterLink title="ExpressGlob Developer Portal" href="/developers" />
+                                                            <FooterLink title="ExpressGlob Logistics" href="/logistics" />
+                                                            <FooterLink title="ExpressGlob Cross Border" href="/cross-border" />
                                                             <FooterLink title="ShopRunner" href="/shoprunner" />
                                                         </div>
                                                     </div>
@@ -163,16 +163,16 @@ export default function Footer() {
                                                         <div style={{ backgroundColor: "" }}>
                                                             <div className="title_v1 section">
                                                                 <span className="fxg-title fxg-title--default left    ">
-                                                                    Follow OptionDelivery
+                                                                    Follow ExpressGlob
                                                                 </span>
                                                             </div>
                                                             <SocialLink href="#" iconName="email" label="Newsletter Signup" />
-                                                            <SocialLink href="#" iconName="facebook" label="OptionDelivery on Facebook" />
-                                                            <SocialLink href="#" iconName="twitter" label="OptionDelivery on Twitter" />
-                                                            <SocialLink href="#" iconName="instagram" label="OptionDelivery on Instagram" />
-                                                            <SocialLink href="#" iconName="linkedin" label="OptionDelivery on LinkedIn" />
-                                                            <SocialLink href="#" iconName="youtube" label="OptionDelivery on YouTube" />
-                                                            <SocialLink href="#" iconName="pinterest" label="OptionDelivery on Pinterest" />
+                                                            <SocialLink href="#" iconName="facebook" label="ExpressGlob on Facebook" />
+                                                            <SocialLink href="#" iconName="twitter" label="ExpressGlob on Twitter" />
+                                                            <SocialLink href="#" iconName="instagram" label="ExpressGlob on Instagram" />
+                                                            <SocialLink href="#" iconName="linkedin" label="ExpressGlob on LinkedIn" />
+                                                            <SocialLink href="#" iconName="youtube" label="ExpressGlob on YouTube" />
+                                                            <SocialLink href="#" iconName="pinterest" label="ExpressGlob on Pinterest" />
                                                         </div>
                                                     </div>
                                                     <div className="fxg-col fxg-col--mt20 fxg-col--mb20 col-sm-2">
@@ -195,7 +195,7 @@ export default function Footer() {
                                                         <div style={{ backgroundColor: "" }}>
                                                             <div className="title_v1 section">
                                                                 <div className="fxg-title fxg-title--default     ">
-                                                                    © OptionDelivery 1995-{new Date().getFullYear()}
+                                                                    © ExpressGlob 1995-{new Date().getFullYear()}
                                                                 </div>
                                                             </div>
                                                         </div>

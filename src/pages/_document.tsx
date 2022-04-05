@@ -15,9 +15,9 @@ export default function Document() {
                 <link rel="shortcut icon" type="image/png" href="/favicon.png" />
 
                 <meta name="og:type" content="website" />
-                <meta name="og:site_name" content="OptionDelivery" />
+                <meta name="og:site_name" content="ExpressGlob" />
                 <meta name="og:url" content="/" />
-                <meta name="og:title" content="The New OptionDelivery.org - Tracking, Shipping &amp; Locations" />
+                <meta name="og:title" content="The New ExpressGlob.org - Tracking, Shipping &amp; Locations" />
                 <meta name="og:description" content="Become a better shipper, printing offers, or get inspiration for your small business." />
             </Head>
             <body className="page basicpage">

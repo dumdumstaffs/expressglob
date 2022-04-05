@@ -52,7 +52,7 @@ export const Ship = () => {
                                             <div className="fdx-u-mb--8 fdx-u-align--center">
                                                 <h1 id="magr-heading" className="fdx-u-font-size--h3" style={{ marginBottom: "25px" }}>
                                                     {/**/}
-                                                    {/**/} Calculate OptionDelivery shipping rates.{" "}
+                                                    {/**/} Calculate ExpressGlob shipping rates.{" "}
                                                 </h1>
                                                 {
                                                     state.error && (

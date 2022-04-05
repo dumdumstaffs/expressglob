@@ -73,7 +73,7 @@ const ShipmentItem = ({ shipment }: { shipment: Shipment }) => (
             </p>
             <p className="m-0 py-1 sm:py-3 w-full sm:w-1/5 flex items-center justify-between sm:block">
                 <span className="sm:hidden text-xs font-bold">Activity History:</span>
-                <span className="tracking-wide text-xs font-bold">{shipment.locations[0]?.comment || "Shipment information sent to OptionDelivery"}</span>
+                <span className="tracking-wide text-xs font-bold">{shipment.locations[0]?.comment || "Shipment information sent to ExpressGlob"}</span>
             </p>
         </a>
     </Link>

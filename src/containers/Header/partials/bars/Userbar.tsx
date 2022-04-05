@@ -58,7 +58,7 @@ export const Userbar = () => {
                         <DropdownSubMenuRichText
                             title="Open an account"
                             href="/open-account"
-                            desc="to save 30% off OptionDelivery Express®, access time-saving tools and more!"
+                            desc="to save 30% off ExpressGlob Express®, access time-saving tools and more!"
                         />
                     </div>
                 </div >

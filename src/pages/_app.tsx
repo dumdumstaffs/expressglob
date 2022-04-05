@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
     <ConfigProvider>
       <QueryClientProvider client={queryClient}>
         <Component {...pageProps} />
-        <ReactQueryDevtools />
+        {/* <ReactQueryDevtools /> */}
       </QueryClientProvider>
     </ConfigProvider>
   )
