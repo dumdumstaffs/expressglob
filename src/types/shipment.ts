@@ -1,4 +1,4 @@
-export type ShipmentStatus = "initiated" | "pickedUp" | "inTransit" | "delivered"
+export type ShipmentStatus = "initiated" | "inTransit" | "awaitingPayment" | "delivered"
 
 export type ShipmentHistory = Record<string, { id: string, time: string, address: string, comment: string }[]>
 

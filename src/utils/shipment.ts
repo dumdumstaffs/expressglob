@@ -3,8 +3,8 @@ import { Shipment, ShipmentHistory } from "@/types/shipment";
 
 export const shippingStatuses: Record<Shipment["status"], string> = {
     initiated: "Initiated",
-    pickedUp: "Picked Up",
     inTransit: "In Transit",
+    awaitingPayment: "Awaiting Payment",
     delivered: "Delivered"
 }
 

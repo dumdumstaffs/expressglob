@@ -1,7 +1,7 @@
 import { ShipmentStatus } from "@/types/shipment"
 
 const ParcelProgress = ({ progress }: { progress: ShipmentStatus }) => {
-    const stages = ["initiated", "pickedUp", "inTransit", "delivered"] as const
+    const stages: ShipmentStatus[] = ["initiated", "inTransit", "awaitingPayment", "delivered"]
 
     const is = (p: ShipmentStatus, exact?: boolean) => {
         if (exact) return p === progress
@@ -16,15 +16,15 @@ const ParcelProgress = ({ progress }: { progress: ShipmentStatus }) => {
         if (progress === "initiated") {
             append("-left-1 bg-fedex")
         }
-        if (progress === "pickedUp") {
-            append("left-1/3")
-            append("bg-fedex", is("pickedUp"), "bg-fedex-bg")
-            append("w-7 h-7", is("pickedUp", true))
-        }
         if (progress === "inTransit") {
-            append("left-2/3")
+            append("left-1/3")
             append("bg-fedex", is("inTransit"), "bg-fedex-bg")
             append("w-7 h-7", is("inTransit", true))
+        }
+        if (progress === "awaitingPayment") {
+            append("left-2/3")
+            append("bg-fedex", is("awaitingPayment"), "bg-fedex-bg")
+            append("w-7 h-7", is("awaitingPayment", true))
         }
         if (progress === "delivered") {
             append("-right-1")
@@ -44,22 +44,22 @@ const ParcelProgress = ({ progress }: { progress: ShipmentStatus }) => {
             <div className={`
                 h-1 mx-auto rounded-full absolute top-1/2 bg-fedex
                 ${progress === "initiated" ? "w-[calc(10.33%+4px)]" : ""}
-                ${progress === "pickedUp" ? "w-[calc(33.33%+4px)]" : ""}
-                ${progress === "inTransit" ? "w-[calc(66.66%+4px)]" : ""}
+                ${progress === "inTransit" ? "w-[calc(33.33%+4px)]" : ""}
+                ${progress === "awaitingPayment" ? "w-[calc(66.66%+4px)]" : ""}
                 ${progress === "delivered" ? "w-full bg-green-500" : ""}
                 `
             } />
 
             <div className={style("initiated")} />
-            <div className={style("pickedUp")} />
             <div className={style("inTransit")} />
+            <div className={style("awaitingPayment")} />
             <div className={style("delivered")} />
 
             <div className={`
                 w-5 h-5 rounded-full text-white font-bold absolute top-[calc(50%+1.5px)] cursor-pointer tw-translate-center
                 ${is("initiated", true) ? "-right-0" : ""}
-                ${is("pickedUp", true) ? "left-[calc(33.33%+3px)]" : ""}
-                ${is("inTransit", true) ? "left-[calc(66.66%+3px)]" : ""}
+                ${is("inTransit", true) ? "left-[calc(33.33%+3px)]" : ""}
+                ${is("awaitingPayment", true) ? "left-[calc(66.66%+3px)]" : ""}
                 ${is("delivered", true) ? "-right-0" : ""}
                 `
             }

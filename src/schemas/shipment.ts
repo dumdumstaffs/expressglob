@@ -29,7 +29,7 @@ export default class ShipmentSchema {
         signature: yup.boolean().required(),
     })
 
-    private static statusOptions: ShipmentUpdateDto["status"][] = ["initiated", "pickedUp", "inTransit", "delivered"]
+    private static statusOptions: ShipmentUpdateDto["status"][] = ["initiated", "inTransit", "awaitingPayment", "delivered"]
 
     public static update: yup.SchemaOf<ShipmentUpdateDtoWithDate> = ShipmentSchema.create.shape({
         status: yup.mixed<ShipmentUpdateDto["status"]>().required().oneOf(ShipmentSchema.statusOptions),
