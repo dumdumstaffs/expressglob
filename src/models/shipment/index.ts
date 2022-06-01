@@ -76,7 +76,7 @@ const ShipmentSchema = new mongoose.Schema<ShipmentDocument, ShipmentModel>(
         },
         status: {
             type: String,
-            enum: ["initiated", "pickedUp", "inTransit", "delivered"],
+            enum: ["initiated", "inTransit", "awaitingPayment", "delivered"],
             default: "initiated"
         },
         shipDate: {
