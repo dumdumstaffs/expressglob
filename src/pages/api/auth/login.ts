@@ -1,5 +1,5 @@
 import { Controller, handle, Route } from "@/utils/handler";
-import { TypedRequest, TypedResponse } from "@/types/request";
+import type { TypedRequest, TypedResponse } from "@/types/request";
 import AuthService from "@/services/auth";
 import SessionService from "@/services/session";
 import Bootstrap from "@/services/bootstrap";

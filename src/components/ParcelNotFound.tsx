@@ -1,5 +1,3 @@
-import { Shipment } from "@/types/shipment"
-
 const ParcelNotFound = () => (
     <div className="mx-auto w-full sm:w-8/12">
         <div className="text-center mt-24">

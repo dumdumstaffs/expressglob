@@ -29,7 +29,7 @@ export default function TrackSuite() {
     return (
         <>
             <TrackingNav />
-            {store.trackNew && <TrackNew url="/fedextrack" onTrack={Controller.toggleTrackNew} />}
+            {store.trackNew && <TrackNew url="/track" onTrack={Controller.toggleTrackNew} />}
             {
                 shipment.isLoading ? (
                     <Loader />

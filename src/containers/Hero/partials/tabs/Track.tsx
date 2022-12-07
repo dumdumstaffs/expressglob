@@ -22,7 +22,7 @@ export const Track = () => {
         setState({ ...state, loading: true })
 
         const redirect = () => router.push({
-            pathname: "/fedextrack",
+            pathname: "/track",
             query: { trackingId: state.trackingId }
         })
 

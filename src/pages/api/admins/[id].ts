@@ -1,6 +1,6 @@
 import { BadRequest } from "http-errors"
 import { Controller, handle, Route } from "@/utils/handler";
-import { TypedRequest, TypedResponse } from "@/types/request";
+import type { TypedRequest, TypedResponse } from "@/types/request";
 import { admin } from "@/middlewares/admin";
 import AdminService from "@/services/admin";
 import Bootstrap from "@/services/bootstrap";

@@ -30,7 +30,7 @@ export const DropdownTrack = ({ tab }: Props) => {
         Controller.toggleSidebar()
 
         router.push({
-            pathname: "/fedextrack",
+            pathname: "/track",
             query: { trackingId: state.trackingId }
         })
     }
@@ -98,7 +98,7 @@ export const DropdownTrack = ({ tab }: Props) => {
                                 </div>
                             </div>
 
-                            <DropdownSubMenuItem title="Advanced Shipment Tracking" href="/fedextracking" />
+                            <DropdownSubMenuItem title="Advanced Shipment Tracking" href="/tracking" />
                             <DropdownSubMenuItem title="Manage Your Delivery" href="/fdmenrollment" />
 
                             <DropdownSubMenuFooter title="ALL TRACKING SERVICES" href="/tracking" />

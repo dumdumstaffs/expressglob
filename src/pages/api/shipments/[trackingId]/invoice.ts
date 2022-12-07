@@ -1,5 +1,5 @@
 import { Controller, handle, Route } from "@/utils/handler";
-import { TypedRequest, TypedResponse } from "@/types/request";
+import type { TypedRequest, TypedResponse } from "@/types/request";
 import ShipmentService from "@/services/shipment";
 import captureWebsite from "capture-website";
 import { config } from "@/utils/config";

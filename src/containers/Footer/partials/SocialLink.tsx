@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
 type Props = {
     href: string,
@@ -7,6 +8,15 @@ type Props = {
 }
 
 export const SocialLink = ({ href, label, iconName }: Props) => {
+    const [loaded, setLoaded] = useState(false)
+
+    useEffect(() => {
+        if (loaded) return
+        setLoaded(true)
+    }, [])
+
+    if (!loaded) return null
+
     return (
         <div className="icon_link parbase section">
             <Link href={href}>

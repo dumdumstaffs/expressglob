@@ -176,7 +176,7 @@ export default function Invoice() {
 
                 <div className="h-[14%] flex">
                     <Box center className="w-1/3 relative justify-end pr-4">
-                        <Image className="monochrome" src="/images/stamp-delivery.jpeg" width={68 * 1.15} height={68} />
+                        <Image className="monochrome" src="/images/stamp-delivery.jpeg" width={68 * 1.15} height={68} alt="stamp delivery" />
                     </Box>
                     <Box center className="w-1/3 text-center">
                         <i className="leading-3 text-3xs block">
@@ -186,7 +186,7 @@ export default function Invoice() {
                         </i>
                     </Box>
                     <Box center className="w-1/3 relative pl-3">
-                        <Image className="monochrome" src="/images/stamp-approved.jpeg" width={75 * 1.177} height={75} />
+                        <Image className="monochrome" src="/images/stamp-approved.jpeg" width={75 * 1.177} height={75} alt="stamp approved" />
                     </Box>
                 </div>
             </div>

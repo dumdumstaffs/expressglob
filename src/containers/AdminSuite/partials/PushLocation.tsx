@@ -36,7 +36,7 @@ export const PushLocation = ({ shipment }: { shipment: Shipment }) => {
             <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-4 mb-12">
                 <Input label="Address" {...register("address")} error={errors.address?.message} />
                 <Input label="Comment" {...register("comment")} error={errors.comment?.message} />
-                <Input label="Date" type="datetime-local"  {...register("date")} error={errors.date?.message} />
+                <Input label="Date"  {...register("date")} type="datetime-local" error={errors.date?.message} />
             </div>
 
             <div className="mt-12">

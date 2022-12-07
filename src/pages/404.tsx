@@ -129,12 +129,14 @@ const HelpLink = ({ title, href, desc }: { title: string, href: string, desc: st
                         {/* Improved this component */}
                         <div className="fxg-image-component   fxg-tablet--hide fxg-mobile--hide">
                             <div className="fxg-image-component__image">
-                                <img
-                                    className="fxg-img"
-                                    src="/images/icons/jumplink_arrow.svg"
-                                    alt="arrow icon"
-                                    style={{ height: "150%", width: "150%" }}
-                                />
+                                <picture>
+                                    <img
+                                        className="fxg-img"
+                                        src="/images/icons/jumplink_arrow.svg"
+                                        alt="arrow icon"
+                                        style={{ height: "150%", width: "150%" }}
+                                    />
+                                </picture>
                             </div>
                         </div>
                     </div>
