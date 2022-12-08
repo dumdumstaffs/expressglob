@@ -1,4 +1,5 @@
 import Spinner from "@/components/Spinner"
+import { APP_NAME } from "@/data/constants"
 import { useAuth, useLogoutMutation } from "@/queries/auth"
 import { DropdownSubMenuFooter, DropdownSubMenuItem, DropdownSubMenuRichText } from "../DropdownSubMenu"
 
@@ -58,7 +59,7 @@ export const Userbar = () => {
                         <DropdownSubMenuRichText
                             title="Open an account"
                             href="/open-account"
-                            desc="to save 30% off ExpressGlob Express®, access time-saving tools and more!"
+                            desc={`to save 30% off ${APP_NAME.full}®, access time-saving tools and more!`}
                         />
                     </div>
                 </div >

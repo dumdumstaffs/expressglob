@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import Button from "@/components/Button"
 import Input from "@/components/Input"
 import TrackSchema, { TrackDto } from "@/schemas/misc/track"
+import { APP_NAME } from "@/data/constants"
 
 export const TrackNew = ({ url, onTrack }: { url: string, onTrack: () => void }) => {
     const router = useRouter()
@@ -99,7 +100,7 @@ export const TrackNew = ({ url, onTrack }: { url: string, onTrack: () => void })
             </div>
             <form onSubmit={onSubmit} className="mx-auto w-full max-w-[600px]">
                 <h2 className="text-center text-xl font-thin sm:mx-[75px] mt-[20px] mb-[25px]">
-                    Enter up to 30 of your ExpressGlob tracking, door tag, or ExpressGlob Office
+                    Enter up to 30 of your {APP_NAME.full} tracking, door tag, or {APP_NAME.full} Office
                     order numbers (one per line).
                 </h2>
                 <Input label="Tracking Number" {...register("trackingId")} error={errors.trackingId?.message} />

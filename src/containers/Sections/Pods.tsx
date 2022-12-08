@@ -1,6 +1,7 @@
 import Link from "next/link"
 import useWindowDimensions from "@/hooks/useWindowDimensions"
 import { useState } from "react"
+import { APP_NAME } from "@/data/constants"
 
 const TITLE = "Tips and tools to help you keep up and get ahead"
 
@@ -10,7 +11,7 @@ const ITEMS = [
         image: "/images/fy21_apac_150.jpg",
         href: "/shipping/hold-at-location",
         linkText: "Track and hold",
-        desc: "Help keep your deliveries safe when you ask us to hold packages at one of thousands of nearby ExpressGlob® locations.Track your package to begin."
+        desc: `Help keep your deliveries safe when you ask us to hold packages at one of thousands of nearby ${APP_NAME.full} locations.Track your package to begin.`
     },
     {
         title: "Save on shipping",

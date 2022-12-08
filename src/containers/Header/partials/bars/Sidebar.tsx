@@ -1,3 +1,4 @@
+import { APP_NAME } from "@/data/constants"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { DropdownItem } from "../DropdownItem"
 import { DropdownTrack } from "../DropdownTrack"
@@ -46,7 +47,7 @@ export const Sidebar = () => {
                     items={[
                         { title: "New Customer Center", href: "/get-started" },
                         { title: "Small Business Center", href: "/small-business" },
-                        { title: "ExpressGlob Service Guide", href: "/service-guide" },
+                        { title: `${APP_NAME.full} Service Guide`, href: "/service-guide" },
                         { title: "Account Management Tools", href: "/create-account/account-management" },
                         { title: "File a Claim", href: "/customer-support/claims" },
                         { title: "Customer Support", href: "/customer-support" },

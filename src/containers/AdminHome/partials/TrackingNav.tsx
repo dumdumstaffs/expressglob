@@ -1,3 +1,4 @@
+import { APP_NAME } from "@/data/constants";
 import { useState } from "react";
 import { Controller } from "../store";
 
@@ -14,7 +15,7 @@ export const TrackingNav = () => {
             <div className="flex justify-between items-center py-4 px-2 sm:px-4 lg:w-8/12 mx-auto">
                 {/**/}
                 <h2 id="menuTitle" className="text-lg text-gray-600 font-thin m-0">
-                    ExpressGlob<sup className="tracking-super-script">®</sup>&nbsp;Tracking
+                    {APP_NAME.full}<sup className="tracking-super-script">®</sup>&nbsp;Tracking
                 </h2>
                 <ul
                     role="menubar"

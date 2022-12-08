@@ -2,6 +2,7 @@ import { useState, FormEvent } from "react"
 import Input from "@/components/Input"
 import { LoaderError } from "@/components/Loader"
 import tabStyles from "@/styles/modules/tab.module.scss"
+import { APP_NAME } from "@/data/constants"
 
 type State = {
     loading: boolean,
@@ -51,8 +52,7 @@ export const Ship = () => {
                                         <div className="fdx-o-grid__item--12 fdx-o-grid__item--7@medium container-width">
                                             <div className="fdx-u-mb--8 fdx-u-align--center">
                                                 <h1 id="magr-heading" className="fdx-u-font-size--h3" style={{ marginBottom: "25px" }}>
-                                                    {/**/}
-                                                    {/**/} Calculate ExpressGlob shipping rates.{" "}
+                                                    Calculate {APP_NAME.full} shipping rates.{" "}
                                                 </h1>
                                                 {
                                                     state.error && (

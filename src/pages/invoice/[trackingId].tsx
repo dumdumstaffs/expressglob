@@ -8,6 +8,7 @@ import { parseService, parseStatus } from "@/utils/shipment";
 import { useShipment } from "@/queries/shipments";
 import { useConfig } from "@/hooks/useConfig";
 import Logo from "@/components/Logo";
+import { APP_NAME } from "@/data/constants";
 
 export default function Invoice() {
     const { app } = useConfig()
@@ -180,7 +181,7 @@ export default function Invoice() {
                     </Box>
                     <Box center className="w-1/3 text-center">
                         <i className="leading-3 text-3xs block">
-                            *ExpressGlob is consistently recognized as the best shipping company.
+                            *{APP_NAME.full} is consistently recognized as the best shipping company.
                             <br />
                             For further information on international delivery contact us @ {app.emailAlias}
                         </i>

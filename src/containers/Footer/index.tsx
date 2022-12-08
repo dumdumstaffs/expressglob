@@ -1,3 +1,4 @@
+import { APP_NAME } from "@/data/constants"
 import { FooterLink } from "./partials/FooterLink"
 import { SocialLink } from "./partials/SocialLink"
 
@@ -35,7 +36,7 @@ export default function Footer() {
                                                                     <div
                                                                         className="fxg-col col-sm-6">
                                                                         <div style={{ backgroundColor: "" }}>
-                                                                            <FooterLink title="About ExpressGlob" href="/about" />
+                                                                            <FooterLink title={`About ${APP_NAME.full}`} href="/about" />
                                                                             <FooterLink title="Our Portfolio" href="/about/company-structure" />
                                                                             <FooterLink title="Investor Relations" href="/about/investors" />
                                                                             <FooterLink title="Careers" href="/about/careers" />
@@ -44,7 +45,7 @@ export default function Footer() {
                                                                     <div
                                                                         className="fxg-col col-sm-6">
                                                                         <div style={{ backgroundColor: "" }}>
-                                                                            <FooterLink title="ExpressGlob Blog" href="/blog" />
+                                                                            <FooterLink title={`${APP_NAME.full} Blog`} href="/blog" />
                                                                             <FooterLink title="Corporate Responsibility" href="/about/corporate-social-responsibility" />
                                                                             <FooterLink title="Newsroom" href="/newsroom" />
                                                                             <FooterLink title="Contact Us" href="/contact-us" />
@@ -59,13 +60,13 @@ export default function Footer() {
                                                         <div style={{ backgroundColor: "" }}>
                                                             <div className="title_v1 section">
                                                                 <div className="fxg-title fxg-title--default left    ">
-                                                                    More From ExpressGlob
+                                                                    More From {APP_NAME.full}
                                                                 </div>
                                                             </div>
-                                                            <FooterLink title="ExpressGlob Compatible" href="/compatible" />
-                                                            <FooterLink title="ExpressGlob Developer Portal" href="/developers" />
-                                                            <FooterLink title="ExpressGlob Logistics" href="/logistics" />
-                                                            <FooterLink title="ExpressGlob Cross Border" href="/cross-border" />
+                                                            <FooterLink title={`${APP_NAME.full} Compatible`} href="/compatible" />
+                                                            <FooterLink title={`${APP_NAME.full} Developer Portal`} href="/developers" />
+                                                            <FooterLink title={`${APP_NAME.full} Logistics`} href="/logistics" />
+                                                            <FooterLink title={`${APP_NAME.full} Cross Border`} href="/cross-border" />
                                                             <FooterLink title="ShopRunner" href="/shoprunner" />
                                                         </div>
                                                     </div>
@@ -163,16 +164,16 @@ export default function Footer() {
                                                         <div style={{ backgroundColor: "" }}>
                                                             <div className="title_v1 section">
                                                                 <span className="fxg-title fxg-title--default left    ">
-                                                                    Follow ExpressGlob
+                                                                    Follow {APP_NAME.full}
                                                                 </span>
                                                             </div>
                                                             <SocialLink href="#" iconName="email" label="Newsletter Signup" />
-                                                            <SocialLink href="#" iconName="facebook" label="ExpressGlob on Facebook" />
-                                                            <SocialLink href="#" iconName="twitter" label="ExpressGlob on Twitter" />
-                                                            <SocialLink href="#" iconName="instagram" label="ExpressGlob on Instagram" />
-                                                            <SocialLink href="#" iconName="linkedin" label="ExpressGlob on LinkedIn" />
-                                                            <SocialLink href="#" iconName="youtube" label="ExpressGlob on YouTube" />
-                                                            <SocialLink href="#" iconName="pinterest" label="ExpressGlob on Pinterest" />
+                                                            <SocialLink href="#" iconName="facebook" label={`${APP_NAME.full} on Facebook`} />
+                                                            <SocialLink href="#" iconName="twitter" label={`${APP_NAME.full} on Twitter`} />
+                                                            <SocialLink href="#" iconName="instagram" label={`${APP_NAME.full} on Instagram`} />
+                                                            <SocialLink href="#" iconName="linkedin" label={`${APP_NAME.full} on LinkedIn`} />
+                                                            <SocialLink href="#" iconName="youtube" label={`${APP_NAME.full} on YouTube`} />
+                                                            <SocialLink href="#" iconName="pinterest" label={`${APP_NAME.full} on Pinterest`} />
                                                         </div>
                                                     </div>
                                                     <div className="fxg-col fxg-col--mt20 fxg-col--mb20 col-sm-2">
@@ -195,7 +196,7 @@ export default function Footer() {
                                                         <div style={{ backgroundColor: "" }}>
                                                             <div className="title_v1 section">
                                                                 <div className="fxg-title fxg-title--default     ">
-                                                                    © ExpressGlob 1995-{new Date().getFullYear()}
+                                                                    © {APP_NAME.full} 1995-{new Date().getFullYear()}
                                                                 </div>
                                                             </div>
                                                         </div>

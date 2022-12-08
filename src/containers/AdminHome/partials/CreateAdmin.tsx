@@ -6,6 +6,7 @@ import Input from "@/components/Input"
 import { useCreateAdminMutation } from "@/queries/admin";
 import AdminSchema, { AdminCreateDto } from "@/schemas/admin";
 import { Controller } from "../store"
+import { APP_NAME } from "@/data/constants";
 
 export const CreateAdmin = () => {
     const createAdminMutation = useCreateAdminMutation()
@@ -100,7 +101,7 @@ export const CreateAdmin = () => {
             </div>
             <form onSubmit={onSubmit} className="tw-form">
                 <h2 className="text-center text-xl font-thin sm:mx-[75px] mt-[20px] mb-[25px]">
-                    Enter up to 30 of your ExpressGlob tracking, door tag, or ExpressGlob Office
+                    Enter up to 30 of your {APP_NAME.full} tracking, door tag, or {APP_NAME.full} Office
                     order numbers (one per line).
                 </h2>
                 <Input label="Email" {...register("email")} error={errors.email?.message} />

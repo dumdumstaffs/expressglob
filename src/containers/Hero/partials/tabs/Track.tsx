@@ -1,5 +1,6 @@
 import Button from "@/components/Button"
 import Spinner from "@/components/Spinner"
+import { APP_NAME } from "@/data/constants"
 import { useRouter } from "next/router"
 import { ChangeEvent, FormEvent, useState } from "react"
 
@@ -56,14 +57,14 @@ export const Track = () => {
                                             id="trackingnumber"
                                             className="fxg-field__input-text fxg-field__input--required"
                                             required
-                                            title="Enter a ExpressGlob tracking number to review shipping details."
+                                            title={`Enter a ${APP_NAME.full} tracking number to review shipping details.`}
                                             aria-required="true"
                                             value={state.trackingId}
                                             onChange={handleChange}
                                         />
                                         <label htmlFor="trackingnumber" />
                                         <span className="fxg-u-sronly">
-                                            "Enter a ExpressGlob tracking number to review
+                                            "Enter a {APP_NAME.full} tracking number to review
                                             shipping details."
                                         </span>
                                         <span
@@ -175,7 +176,7 @@ export const Track = () => {
                                                             >
                                                                 <p>
                                                                     Need to customize this delivery?
-                                                                    <br /> Learn how ExpressGlob Delivery
+                                                                    <br /> Learn how {APP_NAME.full} Delivery
                                                                     Manager<sup>®</sup> can help ensure
                                                                     your deliveries meet your schedule -
                                                                     not the other way.
@@ -195,9 +196,7 @@ export const Track = () => {
                                                 </div>
                                                 <div
                                                     className="fxg-featured-offer__detail-image "
-                                                    data-mobile-image="/content/dam/fedex/us-united-states/ExpressGlob-Office/images/2018/Q4/delivery_driver_home_express_shipping_1511023269.jpg"
                                                     data-mobile-alt="Woman receiving package delivery at home"
-                                                    data-main-image="/content/dam/fedex/us-united-states/ExpressGlob-Office/images/2018/Q4/delivery_driver_home_express_shipping_1511023269.jpg"
                                                     data-main-alt="Woman receiving package delivery at home"
                                                 >
                                                     <img
@@ -226,7 +225,7 @@ export const Track = () => {
                             <div className="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
                                 <div className="title_v1 aem-GridColumn aem-GridColumn--default--12">
                                     <h2 className="fxg-title fxg-title--default center    ">
-                                        Enter up to 30 ExpressGlob tracking numbers
+                                        Enter up to 30 {APP_NAME.full} tracking numbers
                                     </h2>
                                 </div>
                             </div>

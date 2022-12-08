@@ -1,3 +1,5 @@
+import { APP_NAME } from "@/data/constants";
+
 export function PocBanner() {
     return (
         <div id="action_insert_16458193045801149">
@@ -11,7 +13,7 @@ export function PocBanner() {
                             <div className="gr-text">
                                 <h2>Big savings for small business</h2>
                                 <p>
-                                    Save up to 30% on select shipping when you open a new ExpressGlob
+                                    Save up to 30% on select shipping when you open a new {APP_NAME.full}
                                     account for free.
                                 </p>
                             </div>

@@ -4,6 +4,7 @@ import FedexLayout from "@/layouts/FedexLayout";
 import Hero from "@/containers/Hero";
 import { ActionIcons, FeaturedOffer, PocBanner, PodsCarousel, PodsRow } from "@/containers/Sections";
 import { useConfig } from "@/hooks/useConfig";
+import { APP_NAME } from "@/data/constants";
 
 export default function Home() {
   const { chatWidget } = useConfig()
@@ -75,7 +76,7 @@ export default function Home() {
             href="/fdmenrollment"
             linkText="sign up for free"
             image="/images/fy22_shutterstock_54.jpg"
-            desc="Sign up for ExpressGlob Delivery Manager® to place holds, give delivery instructions, sign remotely, and more. Stay informed with tracking alerts and notifications."
+            desc={`Sign up for ${APP_NAME.full} Delivery Manager® to place holds, give delivery instructions, sign remotely, and more. Stay informed with tracking alerts and notifications.`}
           />
           <div className="spacer">
             <div
@@ -119,7 +120,7 @@ export default function Home() {
                     money-back guarantee
                   </a>
                 </Link>{" "}
-                was reinstated for select ExpressGlob Express<sup>®</sup> services
+                was reinstated for select {APP_NAME.full}<sup>®</sup> services
                 for U.S. domestic shipments and U.S. export shipments.
               </p>
             </div>

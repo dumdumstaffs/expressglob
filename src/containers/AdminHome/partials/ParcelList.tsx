@@ -4,6 +4,7 @@ import { Loader, LoaderError } from "@/components/Loader"
 import { parseStatus } from "@/utils/shipment"
 import { useShipments } from "@/queries/shipments"
 import { Shipment } from "@/types/shipment"
+import { APP_NAME } from "@/data/constants"
 
 export const ParcelList = () => {
     const { query, page, next, prev, hasMore } = useShipments()
@@ -73,7 +74,7 @@ const ShipmentItem = ({ shipment }: { shipment: Shipment }) => (
             </p>
             <p className="m-0 py-1 sm:py-3 w-full sm:w-1/5 flex items-center justify-between sm:block">
                 <span className="sm:hidden text-xs font-bold">Activity History:</span>
-                <span className="tracking-wide text-xs font-bold">{shipment.locations[0]?.comment || "Shipment information sent to ExpressGlob"}</span>
+                <span className="tracking-wide text-xs font-bold">{shipment.locations[0]?.comment || `Shipment information sent to ${APP_NAME.full}`}</span>
             </p>
         </a>
     </Link>

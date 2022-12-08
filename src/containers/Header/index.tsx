@@ -2,6 +2,7 @@ import Link from "next/link"
 import Logo from "@/components/Logo"
 import { Sidebar, Search, Userbar } from "./partials/bars"
 import { useStore, Controller } from "./store"
+import { APP_NAME } from "@/data/constants"
 
 export default function Header() {
     const store = useStore()
@@ -21,7 +22,7 @@ export default function Header() {
                                             <a
                                                 className="fxg-header__logo_wrapper"
                                                 target="_self"
-                                                aria-label="ExpressGlob Logo"
+                                                aria-label={`${APP_NAME.full} Logo`}
                                             >
                                                 <Logo />
                                             </a>
