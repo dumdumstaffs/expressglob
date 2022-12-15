@@ -2,24 +2,26 @@ import { cleanEnv, num, str } from "envalid"
 
 const env = cleanEnv(process.env, {
     PORT: num({ default: 5000 }),
-    APP_SECRET: str(),
+    APP_SECRET: str({ default: "secret" }),
     DATABASE_URI: str({
         desc: "MongoDB database URI",
+        default: "test"
     }),
     SESSION_LIFETIME: num({
         example: "90",
         desc: "Duration of sessions in days",
+        default: 1
     }),
-    ADMIN_EMAIL: str(),
-    ADMIN_PASS: str(),
-    APP_EMAIL: str(),
-    APP_EMAIL_ALIAS: str(),
-    APP_ADDRESS: str(),
-    CLOUDINARY_CLOUD_NAME: str(),
-    CLOUDINARY_API_KEY: str(),
-    CLOUDINARY_API_SECRET: str(),
-    CLOUDINARY_PUBLIC_UPLOAD_URL: str(),
-    CLOUDINARY_PUBLIC_UPLOAD_PRESET: str(),
+    ADMIN_EMAIL: str({ default: "test@gmail.com" }),
+    ADMIN_PASS: str({ default: "secret" }),
+    APP_EMAIL: str({ default: "test@gmail.com" }),
+    APP_EMAIL_ALIAS: str({ default: "test@gmail.com" }),
+    APP_ADDRESS: str({ default: "test" }),
+    CLOUDINARY_CLOUD_NAME: str({ default: "test" }),
+    CLOUDINARY_API_KEY: str({ default: "test" }),
+    CLOUDINARY_API_SECRET: str({ default: "test" }),
+    CLOUDINARY_PUBLIC_UPLOAD_URL: str({ default: "test" }),
+    CLOUDINARY_PUBLIC_UPLOAD_PRESET: str({ default: "test" }),
 })
 
 export const config = {
