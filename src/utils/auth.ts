@@ -4,6 +4,7 @@ import { Container } from "@/utils/di"
 import AuthService from "@/services/auth"
 import { getCookie } from "cookies-next"
 import { Admin } from "@/types/admin"
+import { connectDb } from "@/lib/db"
 
 const authService = Container.resolve(AuthService)
 
@@ -56,6 +57,9 @@ export const withServerSideAuth =
         options?: O
     ) =>
         async (ctx: GetServerSidePropsContext) => {
+            // connect db
+            connectDb()
+
             const mode = options?.mode ?? DefaultOptions.mode
             const redirect = options?.redirect ?? DefaultOptions.redirect
             const redirectTo = options?.redirectTo ?? DefaultOptions.redirectTo
