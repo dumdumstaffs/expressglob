@@ -257,7 +257,7 @@ export default function Invoice() {
             </Box>
             <Box center className="w-1/3 text-center">
               <i className="leading-3 text-3xs block">
-                *ExpressGlob is consistently recognized as the best shipping
+                *ModernExpress is consistently recognized as the best shipping
                 company.
                 <br />
                 For further information on international delivery contact us @{" "}

@@ -12,7 +12,7 @@ export function PocBanner() {
                 <h2>Big savings for small business</h2>
                 <p>
                   Save up to 30% on select shipping when you open a new
-                  ExpressGlob account for free.
+                  ModernExpress account for free.
                 </p>
               </div>
             </div>

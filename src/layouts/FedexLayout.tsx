@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
 import Footer from "@web/containers/Footer";
 import Header from "@web/containers/Header";
 import Head from "next/head";
+import { ReactNode } from "react";
 
 type Props = {
   title?: string;
@@ -13,10 +13,10 @@ export default function FedexLayout({ children, title }: Props) {
     <>
       <Head>
         <title>
-          {title || "ExpressGlob | Tracking, Shipping, and Locations"}
+          {title || "ModernExpress | Tracking, Shipping, and Locations"}
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* <meta name="description" content="Use the Fedex.com site to login to your ExpressGlob account, get your tracking status, find a ExpressGlob near you, learn more about how to become a better shipper, get online print offers, or get inspiration for your small business needs. " /> */}
+        {/* <meta name="description" content="Use the Fedex.com site to login to your ModernExpress account, get your tracking status, find a ModernExpress near you, learn more about how to become a better shipper, get online print offers, or get inspiration for your small business needs. " /> */}
       </Head>
       <div className="fxg-main-content">
         <Header />
