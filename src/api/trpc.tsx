@@ -33,7 +33,9 @@ export function TRPCProvider({ children }: { children: React.ReactNode }) {
       new QueryClient({
         defaultOptions: {
           queries: {
+            retry: false,
             networkMode: "always",
+            refetchOnWindowFocus: false,
           },
           mutations: {
             networkMode: "always",

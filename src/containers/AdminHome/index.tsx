@@ -1,3 +1,5 @@
+"use client";
+
 import { arrayIncludes } from "@shared/helpers";
 import TabLink from "@web/components/TabLink";
 import { TrackNew } from "@web/containers/TrackNew";

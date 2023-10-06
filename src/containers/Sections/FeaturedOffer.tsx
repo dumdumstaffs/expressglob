@@ -1,3 +1,5 @@
+"use client";
+
 import { useMediaQuery } from "@web/hooks/useMediaQuery";
 import Link from "next/link";
 

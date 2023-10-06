@@ -1,8 +1,3 @@
-import "@web/styles/globals.css";
-import "@web/styles/poc-banner.css";
-import "@web/styles/print.css";
-
-import { TRPCProvider } from "@web/api/trpc";
 import Footer from "@web/containers/Footer";
 import Header from "@web/containers/Header";
 import { clientConfig } from "@web/utils/config";
@@ -33,24 +28,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html>
-      <body className="page basicpage">
-        <div className="fxg-main-content">
-          <TRPCProvider>
-            <Header />
-            <div className="root responsivegrid">
-              <div className="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
-                <div className="responsivegrid aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--12 aem-GridColumn--offset--default--0">
-                  <div className="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
-                    {children}
-                  </div>
-                </div>
-              </div>
+    <div className="fxg-main-content">
+      <Header />
+      <div className="root responsivegrid">
+        <div className="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+          <div className="responsivegrid aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--12 aem-GridColumn--offset--default--0">
+            <div className="aem-Grid aem-Grid--12 aem-Grid--default--12">
+              {children}
             </div>
-            <Footer />
-          </TRPCProvider>
+          </div>
         </div>
-      </body>
-    </html>
+      </div>
+      <Footer />
+    </div>
   );
 }

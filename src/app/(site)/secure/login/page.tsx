@@ -5,7 +5,6 @@ import AuthSchema from "@shared/schemas/auth";
 import { trpc } from "@web/api/trpc";
 import Button from "@web/components/Button";
 import Input from "@web/components/Input";
-import { useRedirectAuth } from "@web/context/auth";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -24,8 +23,6 @@ export default function Login() {
   const onSubmit = handleSubmit((data) => {
     loginMutation.mutate(data);
   });
-
-  useRedirectAuth("guest");
 
   return (
     <div className="py-16 p-2 text-center">

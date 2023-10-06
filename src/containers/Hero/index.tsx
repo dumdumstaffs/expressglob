@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 import { Location, Ship, Track } from "./partials/tabs";

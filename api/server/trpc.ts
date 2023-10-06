@@ -31,7 +31,9 @@ export const adminProcedure = publicProcedure.use(async ({ ctx, next }) => {
   const token = ctx.container.session.get({ req: ctx.req, res: ctx.res });
   if (!token) throw new TRPCError({ code: "UNAUTHORIZED" });
 
-  const { id } = await ctx.container.session.verify(token);
+  const { id } = await ctx.container.session.verify(token).catch(() => {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  });
 
   const admin = await ctx.container.admin.findById(id);
   if (!admin) throw new TRPCError({ code: "UNAUTHORIZED" });

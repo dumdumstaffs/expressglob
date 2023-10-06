@@ -1,18 +1,25 @@
 import { trpc } from "@web/api/trpc";
-import { useOptionalAuth } from "@web/context/auth";
+import { useOptionalAuth } from "@web/middlewares/auth";
+import { useRouter } from "next/navigation";
 import {
+  DropdownSubMenuButtonFooter,
   DropdownSubMenuFooter,
   DropdownSubMenuItem,
   DropdownSubMenuRichText,
 } from "../DropdownSubMenu";
 
 export const Userbar = () => {
+  const router = useRouter();
   const auth = useOptionalAuth();
 
   const logoutMutation = trpc.auth.logout.useMutation();
 
   const logout = () => {
-    logoutMutation.mutate();
+    logoutMutation.mutate(undefined, {
+      onSuccess() {
+        router.push("/");
+      },
+    });
   };
 
   return (
@@ -37,9 +44,7 @@ export const Userbar = () => {
         <div className="wlgnlink-class">
           <div className="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
             {auth ? (
-              <div onClick={logout}>
-                <DropdownSubMenuFooter href="#" title="Logout" />
-              </div>
+              <DropdownSubMenuButtonFooter onClick={logout} title="Logout" />
             ) : (
               <DropdownSubMenuFooter
                 title="SIGN UP / LOG IN"

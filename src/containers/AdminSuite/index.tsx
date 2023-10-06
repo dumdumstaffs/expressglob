@@ -1,3 +1,5 @@
+"use client";
+
 import { trpc } from "@web/api/trpc";
 import { Loader } from "@web/components/Loader";
 import ParcelBody from "@web/components/ParcelBody";

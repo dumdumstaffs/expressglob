@@ -58,6 +58,28 @@ export const DropdownSubMenuItem = ({
     </div>
   );
 
+export const DropdownSubMenuButtonFooter = ({
+  onClick,
+  title,
+}: Omit<SubMenuProps, "href"> & { onClick: () => void }) => (
+  <div
+    onClick={onClick}
+    className="button_v1 aem-GridColumn aem-GridColumn--default--12"
+  >
+    <div className="link">
+      <a
+        aria-label={title}
+        title={title}
+        target="_self"
+        className="fxg-link js-fxgc-init fxg-link--blue"
+        style={{ color: "inherit" }}
+      >
+        {title}
+      </a>
+    </div>
+  </div>
+);
+
 export const DropdownSubMenuFooter = ({ href, title }: SubMenuProps) => (
   <div className="button_v1 aem-GridColumn aem-GridColumn--default--12">
     <div className="link">
