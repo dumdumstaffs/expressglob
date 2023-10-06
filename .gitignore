@@ -37,3 +37,6 @@ yarn-error.log*
 /env
 .swapenv.yaml
 .swapenvcache.yaml
+
+.netlify
+/functions

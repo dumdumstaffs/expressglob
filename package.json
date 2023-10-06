@@ -33,7 +33,7 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^6.2.4",
-    "nanoid": "^5.0.1",
+    "nanoid": "^3.3.6",
     "next": "^13.5.4",
     "react": "^18.2.0",
     "react-barcode": "^1.4.6",

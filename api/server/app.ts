@@ -1,7 +1,6 @@
 import { connectDb } from "@api/lib/db";
 import { serverConfig } from "@api/utils/config";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
-import captureWebsite from "capture-website";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
@@ -29,8 +28,9 @@ app.get("/api/invoice/:trackingId", async (req, res) => {
     const trackingId = req.params.trackingId;
     const url = serverConfig.app.DOMAIN + `/invoice?trackingId=${trackingId}`;
 
-    console.log({ url });
-
+    const captureWebsite = await import("capture-website").then(
+      (mod) => mod.default,
+    );
     const buffer = await captureWebsite.buffer(url, {
       width: 414,
       height: 600,

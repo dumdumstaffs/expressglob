@@ -15,7 +15,6 @@ export class SessionService {
     res.cookie(SessionService.SessionCookie, token, {
       secure: serverConfig.app.isProd,
       httpOnly: true,
-      sameSite: "strict",
       maxAge: serverConfig.session.LIFETIME * 24 * 60 * 60 * 1000,
     });
   }
