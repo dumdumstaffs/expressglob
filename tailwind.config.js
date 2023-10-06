@@ -1,7 +1,5 @@
 module.exports = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontSize: {
@@ -9,16 +7,16 @@ module.exports = {
         "3xs": "8px",
       },
       fontFamily: {
-        logo: "'Montserrat', sans-serif"
+        logo: "'Montserrat', sans-serif",
       },
       colors: {
         fedex: {
           DEFAULT: "#4d148c",
           bg: "#f2f2f2",
-          light: "#fafafa"
-        }
-      }
+          light: "#fafafa",
+        },
+      },
     },
   },
   plugins: [],
-}
+};

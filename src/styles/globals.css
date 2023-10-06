@@ -1,0 +1,59 @@
+@import "/css/base.css";
+@import "/css/dependencies.css";
+@import "/css/xf.css";
+@import "/css/kalturavideopicker.css";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap");
+
+/* @tailwind base; */
+@tailwind components;
+@tailwind utilities;
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-group input {
+  margin-bottom: 8px;
+}
+
+.input-group button {
+  margin-top: 20px;
+}
+
+@layer components {
+  .tw-translate-center {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .tw-form {
+    @apply flex flex-col justify-center w-full max-w-xl sm:w-8/12 mx-auto space-y-2;
+  }
+
+  .tw-input {
+    @apply block float-none w-full;
+  }
+
+  .tw-input input {
+    @apply bg-fedex-light w-full;
+  }
+
+  .tw-input.error input {
+    @apply border-red-500;
+  }
+
+  .tw-input.error span {
+    @apply text-red-500;
+  }
+
+  .tw-button {
+    @apply w-full sm:w-auto mx-auto ml-0 min-w-[220px];
+  }
+
+  .monochrome {
+    filter: grayscale(100%);
+  }
+}

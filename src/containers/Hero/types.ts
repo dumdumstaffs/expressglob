@@ -1,1 +1,1 @@
-export type Tab = "ship" | "track" | "location"
+export type Tab = "ship" | "track" | "location";

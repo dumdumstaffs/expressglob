@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "api/*"
+  to = "/.netlify/functions/trpc/:splat"
+  status = 200
+
+[build]
+  command = "yarn api:build"
+
+[functions]
+  directory = "functions"
