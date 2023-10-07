@@ -61,7 +61,7 @@ export const Sidebar = () => {
           items={[
             { title: "New Customer Center", href: "/get-started" },
             { title: "Small Business Center", href: "/small-business" },
-            { title: "ModernExpress Service Guide", href: "/service-guide" },
+            { title: "ExpressGlob Service Guide", href: "/service-guide" },
             {
               title: "Account Management Tools",
               href: "/create-account/account-management",

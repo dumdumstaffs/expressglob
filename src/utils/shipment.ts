@@ -41,57 +41,57 @@ export const parseStatus = (status: Shipment["status"]) => {
 export const shippingServices = [
   {
     name: "ground",
-    desc: "ModernExpress Ground®",
+    desc: "ExpressGlob Ground®",
     routines: "Delivers by end of day (business addresses only)",
   },
   {
     name: "home-delivery",
-    desc: "ModernExpress Home Delivery®",
+    desc: "ExpressGlob Home Delivery®",
     routines:
       "Delivery between 9 a.m. and 8 p.m., Mon.-Sat. in 1-5 business days (residential addresses only)",
   },
   {
     name: "same-day",
-    desc: "ModernExpress SameDay®",
+    desc: "ExpressGlob SameDay®",
     routines: "Door-to-door delivery in just hours",
   },
   {
     name: "intl-next-flight",
-    desc: "ModernExpress® International Next Flight",
+    desc: "ExpressGlob® International Next Flight",
     routines: "Delivery in just hours, depending on flight availability",
   },
   {
     name: "intl-first",
-    desc: "ModernExpress International First®",
+    desc: "ExpressGlob International First®",
     routines: "Delivers by end of day (business addresses only)",
   },
   {
     name: "intl-priority",
-    desc: "ModernExpress International Priority",
+    desc: "ExpressGlob International Priority",
     routines:
       "Delivery typically in 1, 2 or 3 business days to more than 220 countries and territories",
   },
   {
     name: "intl-ground",
-    desc: "ModernExpress International Ground®",
+    desc: "ExpressGlob International Ground®",
     routines:
       "Delivery by end of business day typically in 2-7 business days  (delivery to Canada only)",
   },
   {
     name: "first-overnight",
-    desc: "ModernExpress First Overnight®",
+    desc: "ExpressGlob First Overnight®",
     routines:
       "Delivery first thing the next business-day morning by 8, 8:30, 9 or 9: 30 a.m.to most areas and by 10 a.m., 11 a.m.or 2 p.m.to extended areas",
   },
   {
     name: "priority-overnight",
-    desc: "ModernExpress Priority Overnight®",
+    desc: "ExpressGlob Priority Overnight®",
     routines:
       "Next-business-day delivery by 10: 30 a.m.to most areas and by noon, 4: 30 p.m.or 5 p.m.to some rural areas",
   },
   {
     name: "standard-overnight",
-    desc: "ModernExpress Standard Overnight®",
+    desc: "ExpressGlob Standard Overnight®",
     routines:
       "Delivery the next business day in the afternoon by 3 p.m.to most areas and by 4: 30 p.m. to some rural areas(by 8 p.m. to residences)",
   },

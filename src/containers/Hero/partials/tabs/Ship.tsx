@@ -58,7 +58,7 @@ export const Ship = () => {
                           style={{ marginBottom: "25px" }}
                         >
                           {/**/}
-                          {/**/} Calculate ModernExpress shipping rates.{" "}
+                          {/**/} Calculate ExpressGlob shipping rates.{" "}
                         </h1>
                         {state.error && <LoaderError size="small" />}
                         <form

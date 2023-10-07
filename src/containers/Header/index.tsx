@@ -29,7 +29,7 @@ export default function Header() {
                       href="/"
                       className="fxg-header__logo_wrapper"
                       target="_self"
-                      aria-label="ModernExpress Logo"
+                      aria-label="ExpressGlob Logo"
                     >
                       <Logo />
                     </Link>

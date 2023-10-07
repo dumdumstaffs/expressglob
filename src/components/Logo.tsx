@@ -7,10 +7,10 @@ export default function Logo({ invert = false }) {
             invert ? "text-fedex" : "text-white"
           }`}
         >
-          Modern
+          Express
         </span>
         <span className="font-logo font-extrabold tracking-tighter  text-orange-500">
-          Express<sub>®</sub>
+          Glob<sub>®</sub>
         </span>
       </span>
     </div>

@@ -32,7 +32,7 @@ export default function Footer() {
                                   <div className="fxg-col col-sm-6">
                                     <div style={{}}>
                                       <FooterLink
-                                        title="About ModernExpress"
+                                        title="About ExpressGlob"
                                         href="/about"
                                       />
                                       <FooterLink
@@ -52,7 +52,7 @@ export default function Footer() {
                                   <div className="fxg-col col-sm-6">
                                     <div style={{}}>
                                       <FooterLink
-                                        title="ModernExpress Blog"
+                                        title="ExpressGlob Blog"
                                         href="/blog"
                                       />
                                       <FooterLink
@@ -78,23 +78,23 @@ export default function Footer() {
                             <div style={{}}>
                               <div className="title_v1 section">
                                 <div className="fxg-title fxg-title--default left    ">
-                                  More From ModernExpress
+                                  More From ExpressGlob
                                 </div>
                               </div>
                               <FooterLink
-                                title="ModernExpress Compatible"
+                                title="ExpressGlob Compatible"
                                 href="/compatible"
                               />
                               <FooterLink
-                                title="ModernExpress Developer Portal"
+                                title="ExpressGlob Developer Portal"
                                 href="/developers"
                               />
                               <FooterLink
-                                title="ModernExpress Logistics"
+                                title="ExpressGlob Logistics"
                                 href="/logistics"
                               />
                               <FooterLink
-                                title="ModernExpress Cross Border"
+                                title="ExpressGlob Cross Border"
                                 href="/cross-border"
                               />
                               <FooterLink
@@ -203,7 +203,7 @@ export default function Footer() {
                             <div style={{}}>
                               <div className="title_v1 section">
                                 <span className="fxg-title fxg-title--default left    ">
-                                  Follow ModernExpress
+                                  Follow ExpressGlob
                                 </span>
                               </div>
                               <SocialLink
@@ -212,27 +212,27 @@ export default function Footer() {
                               />
                               <SocialLink
                                 iconName="facebook"
-                                label="ModernExpress on Facebook"
+                                label="ExpressGlob on Facebook"
                               />
                               <SocialLink
                                 iconName="twitter"
-                                label="ModernExpress on Twitter"
+                                label="ExpressGlob on Twitter"
                               />
                               <SocialLink
                                 iconName="instagram"
-                                label="ModernExpress on Instagram"
+                                label="ExpressGlob on Instagram"
                               />
                               <SocialLink
                                 iconName="linkedin"
-                                label="ModernExpress on LinkedIn"
+                                label="ExpressGlob on LinkedIn"
                               />
                               <SocialLink
                                 iconName="youtube"
-                                label="ModernExpress on YouTube"
+                                label="ExpressGlob on YouTube"
                               />
                               <SocialLink
                                 iconName="pinterest"
-                                label="ModernExpress on Pinterest"
+                                label="ExpressGlob on Pinterest"
                               />
                             </div>
                           </div>
@@ -256,7 +256,7 @@ export default function Footer() {
                             <div style={{}}>
                               <div className="title_v1 section">
                                 <div className="fxg-title fxg-title--default     ">
-                                  © ModernExpress 1995-
+                                  © ExpressGlob 1995-
                                   {new Date().getFullYear()}
                                 </div>
                               </div>

@@ -5,18 +5,18 @@ import { Metadata } from "next";
 import { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "ModernExpress | Tracking, Shipping, and Locations",
+  title: "ExpressGlob | Tracking, Shipping, and Locations",
   description:
-    "Use the ModernExpress site to login to your ModernExpress account, get your tracking status, find a ModernExpress near you, learn more about how to become a better shipper, get online print offers, or get inspiration for your small business needs. ",
+    "Use the ExpressGlob site to login to your ExpressGlob account, get your tracking status, find a ExpressGlob near you, learn more about how to become a better shipper, get online print offers, or get inspiration for your small business needs. ",
   keywords:
     "marketing:products_services/tools/calculators/rates,marketing:products_services/ship/locations,marketing:products_services/location/us,marketing:products_services/print,marketing:products_services/ship,marketing:products_services/tools/contact",
   formatDetection: { telephone: false },
   metadataBase: new URL(clientConfig.app.domain),
   openGraph: {
     type: "website",
-    siteName: "ModernExpress",
+    siteName: "ExpressGlob",
     url: "/",
-    title: "The New ModernExpress.org - Tracking, Shipping &amp; Locations",
+    title: "The New ExpressGlob.org - Tracking, Shipping &amp; Locations",
     description:
       "Become a better shipper, printing offers, or get inspiration for your small business.",
   },
