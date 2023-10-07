@@ -5,12 +5,17 @@ import AuthSchema from "@shared/schemas/auth";
 import { trpc } from "@web/api/trpc";
 import Button from "@web/components/Button";
 import Input from "@web/components/Input";
+import { authToken } from "@web/utils/auth";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 export default function Login() {
-  const loginMutation = trpc.auth.login.useMutation();
+  const loginMutation = trpc.auth.login.useMutation({
+    onSuccess(data) {
+      authToken.set(data.token);
+    },
+  });
 
   const {
     handleSubmit,

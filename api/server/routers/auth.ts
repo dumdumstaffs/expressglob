@@ -20,20 +20,12 @@ export const authRouter = router({
       }
       const token = await ctx.container.session.sign(admin.doc().id);
 
-      ctx.container.session.set(token, { req: ctx.req, res: ctx.res });
-
-      return { message: "Login successful" };
+      return { message: "Login successful", token };
     }),
 
   profile: adminProcedure.query(({ ctx }) => {
     const profile = new AdminResource(ctx.admin);
 
     return profile.toJSON();
-  }),
-
-  logout: adminProcedure.mutation(({ ctx }) => {
-    ctx.container.session.clear({ req: ctx.req, res: ctx.res });
-
-    return { message: "Logout successful" };
   }),
 });

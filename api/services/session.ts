@@ -5,22 +5,9 @@ import { Request, Response } from "express";
 type RequestResponse = { req: Request; res: Response };
 
 export class SessionService {
-  public static SessionCookie = "token";
-
   public get({ req }: RequestResponse) {
-    return req.cookies[SessionService.SessionCookie] as string | undefined;
-  }
-
-  public set(token: string, { res }: RequestResponse) {
-    res.cookie(SessionService.SessionCookie, token, {
-      secure: serverConfig.app.isProd,
-      httpOnly: true,
-      maxAge: serverConfig.session.LIFETIME * 24 * 60 * 60 * 1000,
-    });
-  }
-
-  public clear({ res }: RequestResponse) {
-    res.clearCookie(SessionService.SessionCookie);
+    const token = req.headers.authorization?.split("Bearer ")[1];
+    return token;
   }
 
   public async sign(id: string) {

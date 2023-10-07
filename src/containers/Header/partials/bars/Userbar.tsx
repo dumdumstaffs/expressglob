@@ -1,5 +1,6 @@
 import { trpc } from "@web/api/trpc";
 import { useOptionalAuth } from "@web/middlewares/auth";
+import { authToken } from "@web/utils/auth";
 import { useRouter } from "next/navigation";
 import {
   DropdownSubMenuButtonFooter,
@@ -11,15 +12,12 @@ import {
 export const Userbar = () => {
   const router = useRouter();
   const auth = useOptionalAuth();
-
-  const logoutMutation = trpc.auth.logout.useMutation();
+  const trpcContext = trpc.useContext();
 
   const logout = () => {
-    logoutMutation.mutate(undefined, {
-      onSuccess() {
-        router.push("/");
-      },
-    });
+    authToken.clear();
+    trpcContext.auth.profile.reset();
+    router.push("/");
   };
 
   return (
@@ -27,7 +25,6 @@ export const Userbar = () => {
       <a href="#" className="fxg-link fxg-dropdown-js" id="fxg-dropdown-signIn">
         <span aria-hidden="true" className="fxg-user-options__sign-in-text">
           {auth ? auth.fullName : "Sign Up or Log In"}{" "}
-          {logoutMutation.isLoading && "..."}
         </span>
         <img
           className="fxg-user-options__icon"
