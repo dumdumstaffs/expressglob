@@ -1,7 +1,6 @@
 import { connectDb } from "@api/lib/db";
 import { serverConfig } from "@api/utils/config";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
-import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
 import { createContext } from "./context";
@@ -12,8 +11,7 @@ export const app = express();
 connectDb();
 
 app.use(express.json());
-app.use(cors({ credentials: true, origin: serverConfig.app.DOMAIN }));
-app.use(cookieParser());
+app.use(cors());
 
 app.use(
   "/api/trpc",

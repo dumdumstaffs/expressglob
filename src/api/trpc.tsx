@@ -3,6 +3,7 @@
 import type { AppRouter } from "@api/server/trpc";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createTRPCReact, httpBatchLink } from "@trpc/react-query";
+import { authToken } from "@web/utils/auth";
 import { clientConfig } from "@web/utils/config";
 import { useState } from "react";
 
@@ -48,11 +49,13 @@ export function TRPCProvider({ children }: { children: React.ReactNode }) {
       links: [
         httpBatchLink({
           url: `${clientConfig.api.base}/api/trpc`,
-          fetch(url, options) {
-            return fetch(url, {
-              ...options,
-              credentials: "include",
-            });
+          headers() {
+            const token = authToken.get();
+            if (!token) return {};
+
+            return {
+              authorization: `Bearer ${token}`,
+            };
           },
         }),
       ],
