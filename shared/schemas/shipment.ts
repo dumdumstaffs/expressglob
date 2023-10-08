@@ -29,7 +29,10 @@ export default class ShipmentSchema {
 
   public static update = ShipmentSchema.create.extend({
     status: z.enum(["initiated", "inTransit", "awaitingPayment", "delivered"]),
-    arrivalDate: z.string().pipe(z.coerce.date()).optional(),
+    arrivalDate: z.preprocess(
+      (val) => (val === "" ? null : val),
+      z.string().pipe(z.coerce.date()).nullable(),
+    ),
   });
 
   public static pushLocation = z.object({
