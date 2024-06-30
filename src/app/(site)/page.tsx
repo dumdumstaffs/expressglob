@@ -79,7 +79,7 @@ export default function Home() {
             href="/fdmenrollment"
             linkText="sign up for free"
             image="/images/fy22_shutterstock_54.jpg"
-            desc="Sign up for ExpressGlob Delivery Manager® to place holds, give delivery instructions, sign remotely, and more. Stay informed with tracking alerts and notifications."
+            desc="Sign up for Broadway Transit Delivery Manager® to place holds, give delivery instructions, sign remotely, and more. Stay informed with tracking alerts and notifications."
           />
           <div className="spacer">
             <div
@@ -120,7 +120,7 @@ export default function Home() {
                 <Link href="/service-guide/money-back-guarantee">
                   money-back guarantee
                 </Link>{" "}
-                was reinstated for select ExpressGlob Express<sup>®</sup>{" "}
+                was reinstated for select Broadway Transit Express<sup>®</sup>{" "}
                 services for U.S. domestic shipments and U.S. export shipments.
               </p>
             </div>

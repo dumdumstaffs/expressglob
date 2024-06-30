@@ -42,7 +42,7 @@ const ParcelBody = ({ shipment }: { shipment: Shipment }) => {
       <p className="text-xl font-light">
         {shipment.locations[0]
           ? shipment.locations[0].comment
-          : "On ExpressGlob vehicle for delivery"}
+          : "On Broadway Transit vehicle for delivery"}
       </p>
       <p className="uppercase font-light text-lg">
         {shipment.receiver.address}

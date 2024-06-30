@@ -32,7 +32,7 @@ export default function Footer() {
                                   <div className="fxg-col col-sm-6">
                                     <div style={{}}>
                                       <FooterLink
-                                        title="About ExpressGlob"
+                                        title="About Broadway Transit"
                                         href="/about"
                                       />
                                       <FooterLink
@@ -52,7 +52,7 @@ export default function Footer() {
                                   <div className="fxg-col col-sm-6">
                                     <div style={{}}>
                                       <FooterLink
-                                        title="ExpressGlob Blog"
+                                        title="Broadway Transit Blog"
                                         href="/blog"
                                       />
                                       <FooterLink
@@ -78,23 +78,23 @@ export default function Footer() {
                             <div style={{}}>
                               <div className="title_v1 section">
                                 <div className="fxg-title fxg-title--default left    ">
-                                  More From ExpressGlob
+                                  More From Broadway Transit
                                 </div>
                               </div>
                               <FooterLink
-                                title="ExpressGlob Compatible"
+                                title="Broadway Transit Compatible"
                                 href="/compatible"
                               />
                               <FooterLink
-                                title="ExpressGlob Developer Portal"
+                                title="Broadway Transit Developer Portal"
                                 href="/developers"
                               />
                               <FooterLink
-                                title="ExpressGlob Logistics"
+                                title="Broadway Transit Logistics"
                                 href="/logistics"
                               />
                               <FooterLink
-                                title="ExpressGlob Cross Border"
+                                title="Broadway Transit Cross Border"
                                 href="/cross-border"
                               />
                               <FooterLink
@@ -203,7 +203,7 @@ export default function Footer() {
                             <div style={{}}>
                               <div className="title_v1 section">
                                 <span className="fxg-title fxg-title--default left    ">
-                                  Follow ExpressGlob
+                                  Follow Broadway Transit
                                 </span>
                               </div>
                               <SocialLink
@@ -212,27 +212,27 @@ export default function Footer() {
                               />
                               <SocialLink
                                 iconName="facebook"
-                                label="ExpressGlob on Facebook"
+                                label="Broadway Transit on Facebook"
                               />
                               <SocialLink
                                 iconName="twitter"
-                                label="ExpressGlob on Twitter"
+                                label="Broadway Transit on Twitter"
                               />
                               <SocialLink
                                 iconName="instagram"
-                                label="ExpressGlob on Instagram"
+                                label="Broadway Transit on Instagram"
                               />
                               <SocialLink
                                 iconName="linkedin"
-                                label="ExpressGlob on LinkedIn"
+                                label="Broadway Transit on LinkedIn"
                               />
                               <SocialLink
                                 iconName="youtube"
-                                label="ExpressGlob on YouTube"
+                                label="Broadway Transit on YouTube"
                               />
                               <SocialLink
                                 iconName="pinterest"
-                                label="ExpressGlob on Pinterest"
+                                label="Broadway Transit on Pinterest"
                               />
                             </div>
                           </div>
@@ -256,7 +256,7 @@ export default function Footer() {
                             <div style={{}}>
                               <div className="title_v1 section">
                                 <div className="fxg-title fxg-title--default     ">
-                                  © ExpressGlob 1995-
+                                  © Broadway Transit 1995-
                                   {new Date().getFullYear()}
                                 </div>
                               </div>

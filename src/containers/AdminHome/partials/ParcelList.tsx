@@ -100,7 +100,7 @@ const ShipmentItem = ({ shipment }: { shipment: Shipment }) => (
       <span className="sm:hidden text-xs font-bold">Activity History:</span>
       <span className="tracking-wide text-xs font-bold">
         {shipment.locations[0]?.comment ||
-          "Shipment information sent to ExpressGlob"}
+          "Shipment information sent to Broadway Transit"}
       </span>
     </p>
   </Link>
