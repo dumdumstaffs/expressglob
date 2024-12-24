@@ -33,11 +33,6 @@ export function ActionIcons() {
                   image="/images/icons/icon_courier_purple_lg_1637809911.png"
                 />
                 <TableIcon
-                  title="Redirect a package"
-                  href={links.redirect}
-                  image="/images/icons/icon_delivery_purple_lg_2143296207.png"
-                />
-                <TableIcon
                   title="Store hours and services"
                   href={links.store}
                   image="/images/icons/retail-services.svg"

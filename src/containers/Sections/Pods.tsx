@@ -9,14 +9,14 @@ const TITLE = "Tips and tools to help you keep up and get ahead";
 const ITEMS = [
   {
     title: "Hold packages for pickup",
-    image: "/images/fy21_apac_150.jpg",
+    image: "/images/img2.jpg",
     href: "/shipping/hold-at-location",
     linkText: "Track and hold",
     desc: "Help keep your deliveries safe when you ask us to hold packages at one of thousands of nearby ExpressGlob® locations.Track your package to begin.",
   },
   {
     title: "Save on shipping",
-    image: "/images/fy22_england_42.jpg",
+    image: "/images/img3.jpg",
     href: "/open-account",
     linkText: "start saving",
     desc: "Create a free account and enjoy discounts on shipping, easy access to saved delivery addresses, quick payments using your stored profile settings and more.",
@@ -120,9 +120,9 @@ const CarouselItem = ({
     }}
   >
     <div className="fxg-image-component">
-      <div className="fxg-image-component__image">
+      <div className="fxg-image-component__image w-full aspect-[5/3] overflow-hidden">
         <img
-          className="fxg-img"
+          className="fxg-img object-cover"
           src={image}
           alt=""
           aria-hidden="true"
@@ -179,9 +179,9 @@ const RowItem = ({
     <div style={{}}>
       <div className="image_v2 image section">
         <div className="fxg-image-component    ">
-          <div className="fxg-image-component__image">
+          <div className="fxg-image-component__image w-full aspect-[5/3] overflow-hidden">
             <img
-              className="fxg-img"
+              className="fxg-img object-cover"
               src={image}
               alt=""
               aria-hidden="true"

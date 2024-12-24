@@ -49,7 +49,7 @@ export default function Home() {
             title="Promote small business success"
             href="/small-business"
             linkText="get started"
-            image="/images/v2_20170627_mk_b48i8330_11921173.jpg"
+            image="/images/img1.jpg"
             desc="Whether you're in need of e-commerce tips, ready to ship orders, or simply looking for inspiration, the Small Business Resource Center is the perfect place to start."
             imageDir="right"
           />
@@ -58,7 +58,7 @@ export default function Home() {
             href="/small-business/grant-contest/2021-winners/black-owned-businesses"
             linkText="read more"
             image="/images/Copy-of-TradeStJam-9167_WithText.jpg"
-            desc="Every February we celebrate the achievements of Black Americans.This year we're recognizing three thriving Black- owned businesses, featuring he 2021 Small Business Grant Contest winner Trade Street Jam Co."
+            desc="Every February we celebrate the achievements of Black Americans.This year we're recognizing three thriving Black- owned businesses, featuring the 2021 Small Business Grant Contest winner Trade Street Jam Co."
             largeText
           />
           <PodsCarousel />
