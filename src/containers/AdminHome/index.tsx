@@ -9,6 +9,7 @@ import { AdminList } from "./partials/AdminList";
 import { CreateAdmin } from "./partials/CreateAdmin";
 import { CreateParcel } from "./partials/CreateParcel";
 import { ParcelList } from "./partials/ParcelList";
+import { SendEmail } from "./partials/SendEmail";
 import { TrackingNav } from "./partials/TrackingNav";
 import { Controller, useStore } from "./store";
 
@@ -65,6 +66,11 @@ export default function AdminHome() {
               onClick={() => Controller.setTab("newShipment")}
             />
             <TabLink
+              label="Send Email"
+              active={store.tab === "sendEmail"}
+              onClick={() => Controller.setTab("sendEmail")}
+            />
+            <TabLink
               label="All Admins"
               active={store.tab === "admins"}
               onClick={() => Controller.setTab("admins")}
@@ -72,6 +78,7 @@ export default function AdminHome() {
           </div>
           {store.tab === "shipments" && <ParcelList />}
           {store.tab === "newShipment" && <CreateParcel />}
+          {store.tab === "sendEmail" && <SendEmail />}
           {store.tab === "admins" && <AdminList />}
         </div>
       </div>

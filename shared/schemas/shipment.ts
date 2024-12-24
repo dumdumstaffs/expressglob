@@ -28,7 +28,14 @@ export default class ShipmentSchema {
   });
 
   public static update = ShipmentSchema.create.extend({
-    status: z.enum(["initiated", "inTransit", "awaitingPayment", "delivered"]),
+    status: z.enum([
+      "initiated",
+      "inTransit",
+      "arrived",
+      "outForDelivery",
+      "onHold",
+      "delivered",
+    ]),
     arrivalDate: z.preprocess(
       (val) => (val === "" ? null : val),
       z.string().pipe(z.coerce.date()).nullable(),

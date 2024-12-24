@@ -6,7 +6,7 @@ import { Model, Types } from "mongoose";
 export abstract class ModelResource<
   T,
   TDocument,
-  TModel extends Model<TDocument> = Model<TDocument>,
+  TModel extends Model<any> = Model<TDocument>,
 > {
   constructor(protected readonly _doc: InstanceType<TModel>) {}
 
@@ -66,7 +66,7 @@ export abstract class ModelCollection<
 export abstract class ModelPaginatedCollection<
   T,
   TDocument,
-  TModel extends Model<TDocument> = Model<TDocument>,
+  TModel extends Model<any> = Model<TDocument>,
 > {
   constructor(
     protected readonly _paginatedDocs: PaginatedResponse<InstanceType<TModel>>,

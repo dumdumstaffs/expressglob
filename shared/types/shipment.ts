@@ -1,7 +1,9 @@
 export type ShipmentStatus =
   | "initiated"
   | "inTransit"
-  | "awaitingPayment"
+  | "arrived"
+  | "outForDelivery"
+  | "onHold"
   | "delivered";
 
 export type ShipmentHistory = Record<

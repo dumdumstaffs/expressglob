@@ -1,7 +1,8 @@
+const isProd = process.env.NODE_ENV === "production";
 export const clientConfig = {
   app: {
-    emailAlias: process.env.APP_EMAIL_ALIAS as string,
-    domain: process.env.APP_DOMAIN as string,
+    domain: `${isProd ? "https://" : "http://"}${process.env.APP_DOMAIN}`,
+    emailAlias: `support@${process.env.APP_DOMAIN}`,
     address: process.env.APP_ADDRESS as string,
   },
   api: {
@@ -11,5 +12,4 @@ export const clientConfig = {
     publicUrl: process.env.CLOUDINARY_PUBLIC_UPLOAD_URL as string,
     uploadPreset: process.env.CLOUDINARY_PUBLIC_UPLOAD_PRESET as string,
   },
-  chatWidget: process.env.CHAT_WIDGET as string,
 } as const;

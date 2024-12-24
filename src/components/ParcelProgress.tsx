@@ -4,7 +4,9 @@ const ParcelProgress = ({ progress }: { progress: ShipmentStatus }) => {
   const stages: ShipmentStatus[] = [
     "initiated",
     "inTransit",
-    "awaitingPayment",
+    "arrived",
+    "outForDelivery",
+    "onHold",
     "delivered",
   ];
 
@@ -24,14 +26,19 @@ const ParcelProgress = ({ progress }: { progress: ShipmentStatus }) => {
       append("-left-1 bg-fedex");
     }
     if (progress === "inTransit") {
-      append("left-1/3");
+      append("left-1/4");
       append("bg-fedex", is("inTransit"), "bg-fedex-bg");
       append("w-7 h-7", is("inTransit", true));
     }
-    if (progress === "awaitingPayment") {
-      append("left-2/3");
-      append("bg-fedex", is("awaitingPayment"), "bg-fedex-bg");
-      append("w-7 h-7", is("awaitingPayment", true));
+    if (progress === "arrived") {
+      append("left-2/4");
+      append("bg-fedex", is("arrived"), "bg-fedex-bg");
+      append("w-7 h-7", is("arrived", true));
+    }
+    if (progress === "outForDelivery") {
+      append("left-3/4");
+      append("bg-fedex", is("outForDelivery"), "bg-fedex-bg");
+      append("w-7 h-7", is("outForDelivery", true));
     }
     if (progress === "delivered") {
       append("-right-1");
@@ -39,6 +46,9 @@ const ParcelProgress = ({ progress }: { progress: ShipmentStatus }) => {
     }
 
     // general styles
+    if (is("onHold")) {
+      append("bg-yellow-500", progress !== "delivered");
+    }
     append("bg-green-500", is("delivered"));
 
     return className;
@@ -51,28 +61,40 @@ const ParcelProgress = ({ progress }: { progress: ShipmentStatus }) => {
       <div
         className={`
                 h-1 mx-auto rounded-full absolute top-1/2 bg-fedex
-                ${progress === "initiated" ? "w-[calc(10.33%+4px)]" : ""}
-                ${progress === "inTransit" ? "w-[calc(33.33%+4px)]" : ""}
-                ${progress === "awaitingPayment" ? "w-[calc(66.66%+4px)]" : ""}
+                ${progress === "initiated" ? "w-[calc(10%+4px)]" : ""}
+                ${progress === "inTransit" ? "w-[calc(25%+4px)]" : ""}
+                ${progress === "arrived" ? "w-[calc(50%+4px)]" : ""}
+                ${progress === "outForDelivery" ? "w-[calc(75%+4px)]" : ""}
+                ${
+                  progress === "onHold" ? "w-[calc(75%+4px)] bg-yellow-500" : ""
+                }
                 ${progress === "delivered" ? "w-full bg-green-500" : ""}
                 `}
       />
 
       <div className={style("initiated")} />
       <div className={style("inTransit")} />
-      <div className={style("awaitingPayment")} />
+      <div className={style("arrived")} />
+      <div className={style("outForDelivery")} />
+      <div className={style("onHold")} />
       <div className={style("delivered")} />
 
       <div
         className={`
-                w-5 h-5 rounded-full text-white font-bold absolute top-[calc(50%+1.5px)] cursor-pointer tw-translate-center
+                w-5 h-5 rounded-full text-white font-bold absolute top-1/2 cursor-pointer tw-translate-center
                 ${is("initiated", true) ? "-right-0" : ""}
-                ${is("inTransit", true) ? "left-[calc(33.33%+3px)]" : ""}
-                ${is("awaitingPayment", true) ? "left-[calc(66.66%+3px)]" : ""}
+                ${is("inTransit", true) ? "left-[calc(25%+3px)]" : ""}
+                ${is("arrived", true) ? "left-[calc(50%+3px)]" : ""}
+                ${is("outForDelivery", true) ? "left-[calc(75%+3px)]" : ""}
+                ${is("onHold", true) ? "left-[calc(75%+3px)]" : ""}
                 ${is("delivered", true) ? "-right-0" : ""}
                 `}
         dangerouslySetInnerHTML={
-          is("delivered") ? { __html: "&#10003;" } : { __html: "&#8594;" }
+          is("delivered")
+            ? { __html: "&#10003;" }
+            : is("onHold")
+            ? undefined
+            : { __html: "&#8594;" }
         }
       />
     </div>

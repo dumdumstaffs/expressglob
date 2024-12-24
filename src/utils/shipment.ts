@@ -30,7 +30,9 @@ export const parseHistory = (
 export const shippingStatuses: Record<Shipment["status"], string> = {
   initiated: "Initiated",
   inTransit: "In Transit",
-  awaitingPayment: "Awaiting Payment",
+  arrived: "Arrived",
+  outForDelivery: "Out for Delivery",
+  onHold: "On Hold",
   delivered: "Delivered",
 };
 

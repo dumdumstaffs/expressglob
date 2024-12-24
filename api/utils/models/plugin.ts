@@ -1,10 +1,23 @@
-import { Schema, Model } from "mongoose";
+import { Model, Schema } from "mongoose";
 
 export abstract class ModelPlugin<
   TDocument,
-  TModel extends Model<TDocument> = Model<TDocument>,
+  TModel extends Model<any> = Model<TDocument>,
+  TInstanceMethods = {},
+  TQueryHelpers = {},
+  TVirtuals = {},
+  TStaticMethods = {},
 > {
-  constructor(protected readonly Schema: Schema<TDocument, TModel>) {}
+  constructor(
+    protected readonly Schema: Schema<
+      TDocument,
+      TModel,
+      TInstanceMethods,
+      TQueryHelpers,
+      TVirtuals,
+      TStaticMethods
+    >,
+  ) {}
 
   protected abstract applyHooks(): void;
 

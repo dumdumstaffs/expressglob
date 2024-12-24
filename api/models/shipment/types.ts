@@ -28,7 +28,7 @@ interface ShipmentOverrides {
 }
 
 // query helpers
-interface ShipmentQueryHelpers {
+export interface ShipmentQueryHelpers {
   filter(
     query: FilterQueryParams,
     fields: FilterExpression<ShipmentDocument>,

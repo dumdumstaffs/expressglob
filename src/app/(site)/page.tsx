@@ -6,16 +6,11 @@ import {
   PodsCarousel,
   PodsRow,
 } from "@web/containers/Sections";
-import { clientConfig } from "@web/utils/config";
 import Link from "next/link";
-import Script from "next/script";
 
 export default function Home() {
   return (
     <>
-      {clientConfig.chatWidget && (
-        <Script async src={clientConfig.chatWidget} />
-      )}
       <Hero />
       <div className="container responsivegrid fxg-wrapper aem-GridColumn aem-GridColumn--default--12">
         <div className="cmp-container">

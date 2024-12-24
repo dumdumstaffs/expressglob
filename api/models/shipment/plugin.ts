@@ -23,15 +23,19 @@ export class ShipmentPlugin extends ModelPlugin<ShipmentDocument> {
   protected applyMethods(): void {}
 
   protected applyQueries(): void {
+    // @ts-ignore
     this.Schema.query.paginate = function (query: PaginationQueryParams) {
+      // @ts-ignore
       const paginator = new ModelPaginate<ShipmentDocument>(query, this);
       return paginator.paginate();
     };
 
+    // @ts-ignore
     this.Schema.query.filter = function (
       query: FilterQueryParams,
       fields: FilterExpression<ShipmentDocument>,
     ) {
+      // @ts-ignore
       const filter = new ModelFilter<ShipmentDocument>(query, fields, this);
       return filter.filter();
     };

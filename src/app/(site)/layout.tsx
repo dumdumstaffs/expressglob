@@ -2,6 +2,7 @@ import Footer from "@web/containers/Footer";
 import Header from "@web/containers/Header";
 import { clientConfig } from "@web/utils/config";
 import { Metadata } from "next";
+import Script from "next/script";
 import { ReactNode } from "react";
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <div className="fxg-main-content">
+      <Script src="/livechat.js" />
       <Header />
       <div className="root responsivegrid">
         <div className="aem-Grid aem-Grid--12 aem-Grid--default--12 ">

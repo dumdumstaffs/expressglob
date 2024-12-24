@@ -56,15 +56,19 @@ export class AdminPlugin extends ModelPlugin<AdminDocument> {
   }
 
   protected applyQueries(): void {
+    // @ts-ignore
     this.Schema.query.paginate = function (query: PaginationQueryParams) {
+      // @ts-ignore
       const paginator = new ModelPaginate<AdminDocument>(query, this);
       return paginator.paginate();
     };
 
+    // @ts-ignore
     this.Schema.query.filter = function (
       query: FilterQueryParams,
       fields: FilterExpression<AdminDocument>,
     ) {
+      // @ts-ignore
       const filter = new ModelFilter<AdminDocument>(query, fields, this);
       return filter.filter();
     };
