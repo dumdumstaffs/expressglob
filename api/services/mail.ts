@@ -55,14 +55,6 @@ export class MailService {
       },
     });
 
-    const root = path.join(this.templateRoot(), options.template + "/html.njk");
-    console.log("root:", root);
-    const html = await email.render(root, {
-      ...this.defaultOptions(options.subject),
-      ...options.locals,
-    });
-    console.log(html);
-
     return email.send(emailOptions);
   }
 
