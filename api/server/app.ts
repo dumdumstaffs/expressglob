@@ -29,10 +29,15 @@ app.get("/api/invoice/:trackingId", async (req, res) => {
     const captureWebsite = await import("capture-website").then(
       (mod) => mod.default,
     );
+
     const buffer = await captureWebsite.buffer(url, {
       width: 414,
       height: 600,
       hideElements: [".download"],
+      timeout: 10,
+      launchOptions: {
+        timeout: 60_000,
+      },
     });
 
     res.writeHead(200, {
@@ -42,6 +47,7 @@ app.get("/api/invoice/:trackingId", async (req, res) => {
     });
     res.end(buffer);
   } catch (error) {
+    console.log("err:", error);
     res.status(500).send("Something went wrong");
   }
 });

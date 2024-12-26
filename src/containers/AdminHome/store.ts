@@ -3,7 +3,7 @@ import { proxy, useSnapshot } from "valtio";
 type Store = {
   trackNew: boolean;
   createAdmin: boolean;
-  tab: "shipments" | "newShipment" | "sendEmail" | "admins";
+  tab: "shipments" | "newShipment" | "admins";
 };
 
 export const Store = proxy<Store>({

@@ -34,7 +34,7 @@ export const shipmentRouter = router({
         });
       }
 
-      return shipment.json();
+      return shipment.toJSON();
     }),
 
   create: adminProcedure

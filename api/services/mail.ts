@@ -29,8 +29,7 @@ export class MailService {
   }
 
   public async send<K extends keyof MailTemplates>(options: MailOptions<K>) {
-    const sender = `support@${serverConfig.app.DOMAIN}`;
-
+    const sender = `support@${this.url("").hostname}`;
     const emailOptions: EmailOptions = {
       template: options.template,
       locals: {
@@ -63,7 +62,7 @@ export class MailService {
     if (!serverConfig.app.isProd) {
       return new URL(path, "http://localhost:5173");
     }
-    return new URL(path, `https://${serverConfig.app.DOMAIN}`);
+    return new URL(path, serverConfig.app.DOMAIN);
   }
 
   public parseLines(body: string) {
@@ -86,9 +85,9 @@ export class MailService {
     return {
       subject,
       app_name: serverConfig.app.NAME,
-      app_url: `https://${serverConfig.app.DOMAIN}`,
-      support_email: `support@${serverConfig.app.DOMAIN}`,
-      abuse_email: `abuse@${serverConfig.app.DOMAIN}`,
+      app_url: serverConfig.app.DOMAIN,
+      support_email: `support@${this.url("").hostname}`,
+      abuse_email: `abuse@${this.url("").hostname}`,
       date: new Date().getFullYear(),
     } as const;
   }

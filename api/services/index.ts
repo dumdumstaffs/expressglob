@@ -3,6 +3,7 @@ import { BootstrapService } from "./bootstrap";
 import { MailService } from "./mail";
 import { MediaService } from "./media";
 import { SessionService } from "./session";
+import { SettingsService } from "./settings";
 import { ShipmentService } from "./shipment";
 
 class Container {
@@ -12,6 +13,7 @@ class Container {
   public shipment: ShipmentService;
   public mail: MailService;
   public bootstrap: BootstrapService;
+  public settings: SettingsService;
 
   constructor() {
     this.session = new SessionService();
@@ -20,6 +22,7 @@ class Container {
     this.shipment = new ShipmentService(this.media);
     this.mail = new MailService();
     this.bootstrap = new BootstrapService(this.admin);
+    this.settings = new SettingsService();
   }
 }
 

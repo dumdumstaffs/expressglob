@@ -3,13 +3,13 @@
 import { arrayIncludes } from "@shared/helpers";
 import TabLink from "@web/components/TabLink";
 import { TrackNew } from "@web/containers/TrackNew";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { AdminList } from "./partials/AdminList";
 import { CreateAdmin } from "./partials/CreateAdmin";
 import { CreateParcel } from "./partials/CreateParcel";
 import { ParcelList } from "./partials/ParcelList";
-import { SendEmail } from "./partials/SendEmail";
 import { TrackingNav } from "./partials/TrackingNav";
 import { Controller, useStore } from "./store";
 
@@ -53,6 +53,21 @@ export default function AdminHome() {
           </div>
         </div>
 
+        <div className="mt-8 flex gap-4 mx-auto w-full sm:w-8/12">
+          <Link
+            href="/manager/mail"
+            className="px-8 py-2 rounded-none bg-fedex-bg text-gray-800 hover:underline"
+          >
+            Send mail
+          </Link>
+          <Link
+            href="/manager/settings"
+            className="px-8 py-2 rounded-none bg-fedex-bg text-gray-800 hover:underline"
+          >
+            Settings
+          </Link>
+        </div>
+
         <div className="mt-16 sm:mt-12 sm:mx-4">
           <div className="mx-2 flex items-center justify-start">
             <TabLink
@@ -66,11 +81,6 @@ export default function AdminHome() {
               onClick={() => Controller.setTab("newShipment")}
             />
             <TabLink
-              label="Send Email"
-              active={store.tab === "sendEmail"}
-              onClick={() => Controller.setTab("sendEmail")}
-            />
-            <TabLink
               label="All Admins"
               active={store.tab === "admins"}
               onClick={() => Controller.setTab("admins")}
@@ -78,7 +88,6 @@ export default function AdminHome() {
           </div>
           {store.tab === "shipments" && <ParcelList />}
           {store.tab === "newShipment" && <CreateParcel />}
-          {store.tab === "sendEmail" && <SendEmail />}
           {store.tab === "admins" && <AdminList />}
         </div>
       </div>

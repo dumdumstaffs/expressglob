@@ -1,8 +1,7 @@
-const isProd = process.env.NODE_ENV === "production";
 export const clientConfig = {
   app: {
-    domain: `${isProd ? "https://" : "http://"}${process.env.APP_DOMAIN}`,
-    emailAlias: `support@${process.env.APP_DOMAIN}`,
+    domain: process.env.APP_DOMAIN,
+    emailAlias: `support@${new URL("", process.env.APP_DOMAIN).hostname}`,
     address: process.env.APP_ADDRESS as string,
   },
   api: {

@@ -1,5 +1,6 @@
 import Footer from "@web/containers/Footer";
 import Header from "@web/containers/Header";
+import { Support } from "@web/containers/Support";
 import { clientConfig } from "@web/utils/config";
 import { Metadata } from "next";
 import Script from "next/script";
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   keywords:
     "marketing:products_services/tools/calculators/rates,marketing:products_services/ship/locations,marketing:products_services/location/us,marketing:products_services/print,marketing:products_services/ship,marketing:products_services/tools/contact",
   formatDetection: { telephone: false },
-  metadataBase: new URL(clientConfig.app.domain),
+  metadataBase: new URL("", clientConfig.app.domain),
   openGraph: {
     type: "website",
     siteName: "ExpressGlob",
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </div>
         </div>
       </div>
+      <Support />
       <Footer />
     </div>
   );
