@@ -29,7 +29,7 @@ export class MailService {
   }
 
   public async send<K extends keyof MailTemplates>(options: MailOptions<K>) {
-    const sender = `support@${this.url("").hostname}`;
+    const sender = serverConfig.app.EMAIL; //`support@${this.url("").hostname}`;
     const emailOptions: EmailOptions = {
       template: options.template,
       locals: {
