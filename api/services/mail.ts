@@ -55,6 +55,12 @@ export class MailService {
       },
     });
 
+    const html = await email.render(options.template + "/html.njk", {
+      ...this.defaultOptions(options.subject),
+      ...options.locals,
+    });
+    console.log(html);
+
     return email.send(emailOptions);
   }
 
