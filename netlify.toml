@@ -8,3 +8,4 @@
 
 [functions]
   directory = "functions"
+  included_files = ["templates/**/*.njk"]
