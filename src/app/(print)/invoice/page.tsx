@@ -8,7 +8,8 @@ import { clientConfig } from "@web/utils/config";
 import { parseService, parseStatus } from "@web/utils/shipment";
 import { format } from "date-fns";
 import { useSearchParams } from "next/navigation";
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 
 export default function Invoice() {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
@@ -28,30 +29,65 @@ export default function Invoice() {
   const width = Math.min(windowWidth, 414);
   const height = Math.min(windowHeight, width * 1.45);
 
-  const downloadUrl = new URL(
-    `/api/invoice/${trackingId}`,
-    clientConfig.api.base,
-  ).toString();
+  // const downloadUrl = new URL(
+  //   `/api/invoice/${trackingId}`,
+  //   clientConfig.api.base,
+  // ).toString();
+
+  // client print
+  const containerRef = useRef<HTMLDivElement>(null);
+  const downloadLinkRef = useRef<HTMLAnchorElement>(null);
+  const [png, setPng] = useState<string>();
 
   if (shipment.isLoading) return <Loader />;
   if (shipment.isError) return <LoaderError message="Package not found" />;
 
   if (shipment.isSuccess)
     return (
-      <div className="min-h-screen">
+      <div ref={containerRef} className="min-h-screen">
         <div
           className="mx-auto py-1 px-2 bg-white overflow-scroll flex flex-col"
           style={{ width, height }}
         >
           <div className="m-0 flex items-center justify-between">
             <Logo invert />
-            <a
+            {/* <a
               download
               href={downloadUrl}
               className="download bg-orange-500 px-3 py-2 text-3xs text-white font-bold"
             >
               Download
-            </a>
+            </a> */}
+
+            {png && (
+              <a
+                ref={downloadLinkRef}
+                href={png}
+                download={`Invoice-${shipment.data.trackingId}.png`}
+                className="hidden"
+              >
+                Print
+              </a>
+            )}
+            <button
+              onClick={async () => {
+                if (!containerRef.current) return;
+                const html2canvas = await import("html2canvas").then(
+                  (mod) => mod.default,
+                );
+                const canvas = await html2canvas(containerRef.current, {
+                  ignoreElements(el) {
+                    return el.classList.contains("download");
+                  },
+                });
+                const base64image = canvas.toDataURL("image/png");
+                flushSync(() => setPng(base64image));
+                downloadLinkRef.current?.click();
+              }}
+              className="download bg-orange-500 px-3 py-2 text-[10px] font-bold text-white"
+            >
+              Download
+            </button>
           </div>
 
           <div className="text-2xs m-0 p-0 mb-1">Commercial Invoice</div>
@@ -248,7 +284,7 @@ export default function Invoice() {
           <div className="h-[14%] flex">
             <Box center className="w-1/3 relative justify-end pr-4">
               <img
-                className="monochrome"
+                className="grayscale"
                 src="/images/stamp-delivery.jpeg"
                 width={68 * 1.15}
                 height={68}
@@ -266,7 +302,7 @@ export default function Invoice() {
             </Box>
             <Box center className="w-1/3 relative pl-3">
               <img
-                className="monochrome"
+                className="grayscale"
                 src="/images/stamp-approved.jpeg"
                 width={75 * 1.177}
                 height={75}

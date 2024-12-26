@@ -11,7 +11,7 @@ const ParcelHistory = ({
   const history = parseHistory(shipment.locations);
 
   return (
-    <div className="my-12">
+    <div className="my-12 min-h-40">
       {Object.entries(history).map(([date, locations]) => (
         <div className="mb-4" key={date}>
           <div className="flex justify-between items-center bg-fedex-bg text-gray-700">
