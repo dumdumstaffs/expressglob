@@ -9,6 +9,7 @@ export const connectDb = () => {
     return Promise.resolve();
   }
 
+  mongoose.set("strictQuery", true);
   return mongoose
     .connect(serverConfig.database.URI)
     .then((db) => {
